@@ -4,13 +4,11 @@
 body, .btn--pari{
     background-color: v.$bgcolor;
     color: v.$textcolor;
-    font-family: v.$typo;
-    font-weight: 300;
-    font-size: 30px;
     margin: 0;
 }
 ul{
     list-style: none;
+    padding: 0;
 }
 a{
     color: v.$textcolor;
@@ -23,6 +21,7 @@ section{
     background-color: v.$bgcolor;
 
 }
+
 .btn{
     &--pari{
         width: 212px;
@@ -62,7 +61,7 @@ section{
     max-width: 80%;
     align-self: center;
 }
-.pret,.equipe{
+.pret,.equipe,.banner{
     display: flex;
     flex-direction: column;
 }
@@ -92,7 +91,7 @@ section{
         background-image: 
         linear-gradient(#FF1B1B, #FFB914),
         linear-gradient(#FF1B1B, #FFB914);
-        box-shadow:0px 3px 10px #FF1B1B;
+        box-shadow:0px 3px 30px #FF1B1B;
     }
     &--bleu{
         border-top-color: #2B66FF;
@@ -100,6 +99,39 @@ section{
         background-image: 
         linear-gradient(#2B66FF, #C324FF),
         linear-gradient(#2B66FF, #C324FF);
-        box-shadow:0px 3px 10px #C324FF;
+        box-shadow:0px 3px 30px #C324FF;
     }    
 }
+@media (min-width: 600px){
+    section{
+        padding: 45px;
+    }
+    .video{
+        &--mob{
+            display: none;
+        }
+        &--desk{
+            display: block;
+        }
+    }
+}
+@media (min-width: 900px){
+    .team{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        &__el{
+            &--droite{
+                display: flex;
+                flex-direction: column-reverse;
+            }
+        } 
+    }
+    section{
+        padding: 45px 90px;
+    }
+    .carte{
+        width: 30vh;
+    }
+}
+@media (min-width: 1200px){}

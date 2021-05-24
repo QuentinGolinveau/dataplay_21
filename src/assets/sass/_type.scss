@@ -2,6 +2,11 @@
 
 @use "_var.scss" as v;
 
+body, .btn--pari{
+    font-family: v.$typo;
+    font-weight: 300;
+    font-size: 30px;
+}
 .alinea{
     display: block;
 }
@@ -98,6 +103,94 @@
         &--blue{
             &::before{
                 background-image: v.$gradientb;
+            }
+        }
+    }
+}
+@media (min-width: 600px){
+    .title{
+        &--princ{
+            font-size: 62px;
+        }
+        &--second{
+            font-size: 49px;
+        }
+        &--trois{
+            font-size: 38px;
+        }
+        &--name{
+            margin: 22.75px 0 0 0;
+            font-size: 24px;
+        }
+        .small{
+            font-size: 19px;
+        }
+        .credits{
+            font-size: 13px;
+        }
+        .btn{
+            &--pari{
+                font-size: 24px;
+            }
+        }
+    }
+}
+@media (min-width: 900px){
+    body, .btn--pari{
+        font-size: 38px;
+    }
+    .title{
+        &--princ{
+            font-size: 100px;
+        }
+        &--second{
+            font-size: 62px;
+        }
+        &--trois{
+            font-size: 49px;
+        }
+        &--name{
+            margin: 22.75px 0 0 0;
+            font-size: 30px;
+        }
+    }
+    .small{
+        font-size: 24px;
+    }
+    .credits{
+        font-size: 19px;
+    }
+    .btn{
+        &--pari{
+            font-size: 30px;
+        }
+    }
+    
+}
+@media (min-width: 1200px){
+    .title{
+        &--princ{
+            font-size: 62px;
+        }
+        &--second{
+            font-size: 49px;
+        }
+        &--trois{
+            font-size: 38px;
+        }
+        &--name{
+            margin: 22.75px 0 0 0;
+            font-size: 24px;
+        }
+        .small{
+            font-size: 19px;
+        }
+        .credits{
+            font-size: 13px;
+        }
+        .btn{
+            &--pari{
+                font-size: 24px;
             }
         }
     }
