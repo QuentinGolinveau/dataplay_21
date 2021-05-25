@@ -16,10 +16,10 @@ a{
     color: v.$textcolor;
     text-decoration: none;
 }
-section{
+.content{
     padding: 22.75px;
-}
-.tuto, .equipe, .pret{
+    margin: 0;
+    overflow: hidden;
     background-color: v.$bgcolor;
 
 }
@@ -27,22 +27,35 @@ section{
     &--1{
         position: relative;
         &::before{
-            content: '';
-            background-image: url(../images/Grouporange.svg);
-            max-width: 100vw;
-            background-size: 1000px;
-            background-position: 105% 75%;
-            background-repeat: no-repeat;
+            content: url(../images/Grouporange.svg);
             position: absolute;
+            bottom: 0;
+            right: -250px;
+            opacity: 0.2;    
         }
     }
     &--2{
-        background-image: url(../images/Groupviolet.svg);
-        max-width: 100vw;
-        background-size: 1000px;
-        background-position: 105% 75%;
-        background-repeat: no-repeat;
-
+        position: relative;
+        &::before{
+            content: url(../images/Groupviolet.svg);
+            position: absolute;
+            bottom: -250px;
+            left: -432px;
+            opacity: .2;
+            transform: rotate(135deg);     
+        }
+    }
+    &--3{
+        position: relative;
+        &::before{
+            content: url(../images/Grouporange.svg);
+            position: absolute;
+            bottom: -250px;
+            left: -300px;
+            opacity: .2;
+            transform: rotate(135deg);
+            z-index: 10;    
+        }
     }
 }
 .before{
@@ -61,13 +74,28 @@ section{
         align-items: center;
         width: 210px;
         height: 60px;
-        background: linear-gradient(90deg, #2B66FF 0%, #C324FF 99.93%);
+        background: transparent;
         box-shadow: 0px 3px 9px #C324FF;
         border-radius: 4px;
         text-align: center;
         align-self: center;
         margin: 22.75px 0;
         transform: skew(-3deg,0deg);
+        border-top: 4px solid;
+        border-bottom: 4px solid;
+        background-size: 4px 100%;
+        background-position: 0 0,100% 0;
+        background-repeat: no-repeat;
+        border-radius: 4px;
+        border-top-color: #2b66ff;
+        border-bottom-color: #c324ff;
+        background-image: linear-gradient(#2B66FF, #C324FF),linear-gradient(#2B66FF, #C324FF);
+        &:hover{
+            cursor: pointer;
+            background: linear-gradient(180deg, #2B66FF 0%, #C324FF 99.93%);
+        }
+        
+        
     }
 }
 .video{ 
@@ -100,6 +128,15 @@ section{
 .pret,.equipe,.banner{
     display: flex;
     flex-direction: column;
+}
+.equipe{
+    position: relative;
+    &::before{
+        content: url(../images/Groupviolet.svg);
+        position: absolute;
+        right: -250px;
+        opacity: .2;  
+    }
 }
 .carte{
     display: flex;
@@ -150,8 +187,9 @@ section{
     border-radius: 4px;
     transform: skew(-3deg,0deg);
     align-self: center;
-    width: 100%;
     margin: 22.75px 0;
+    padding: 10px;
+    margin: 10px;
     &__el{
         &--img{
             width: inherit;
@@ -163,7 +201,6 @@ section{
         background-image: 
         linear-gradient(#FF1B1B, #FFB914),
         linear-gradient(#FF1B1B, #FFB914);
-        box-shadow:0px 3px 30px #FF1B1B;
     }
     &--bleu{
         border-top-color: #2B66FF;
@@ -171,7 +208,6 @@ section{
         background-image: 
         linear-gradient(#2B66FF, #C324FF),
         linear-gradient(#2B66FF, #C324FF);
-        box-shadow:0px 3px 30px #C324FF;
     }  
 }
 .team{
@@ -185,6 +221,101 @@ section{
         }
     }
 }
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
+    font-family: v.$typo;
+    @media(min-width: 600px){
+        flex-direction: row;
+        justify-content: space-around;
+   }
+   &__content{
+        @media(min-width: 600px){
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &__btn{
+        border: 4px solid;
+        background-color: transparent;
+        font-size: 49px;
+        height: 30vh;
+        width: 250px;
+        border-color: v.$textcolor;
+        color: v.$textcolor;
+        margin: 10px;
+        padding-top: 45%;
+        border-radius: 12px;
+        transform: skew(-3deg,0deg);
+        &.active{
+            border: none;
+        }
+    }
+    &__choix{
+        font-size: 30px;
+        width: 250px;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+        &--list{
+            padding: 10px;
+            margin: 10px;
+        }
+    }
+}
+.menu{
+    &--bleu{
+        align-items: center;
+        border-top: 4px solid ;
+        border-bottom:4px solid ;
+        background-size:4px 100%;
+        background-position:0 0, 100% 0;
+        background-repeat:no-repeat;
+        border-radius: 4px;
+        transform: skew(-3deg,0deg);
+        align-self: center;
+        margin: 22.75px 0;
+        &.active{
+            border-top: 4px solid ;
+            border-bottom:4px solid ;
+            background-color: v.$purple;
+            box-shadow: 0px 3px 10px #c324ff;
+            border-top-color: #2B66FF;
+            border-bottom-color: #C324FF;
+            background-image: 
+            linear-gradient(#2B66FF, #C324FF),
+            linear-gradient(#2B66FF, #C324FF);
+            box-shadow:0px 3px 30px #C324FF;
+        }
+    }
+    &--org{
+        align-items: center;
+        border-top: 4px solid ;
+        border-bottom:4px solid ;
+        background-size:4px 100%;
+        background-position:0 0, 100% 0;
+        background-repeat:no-repeat;
+        border-radius: 4px;
+        transform: skew(-3deg,0deg);
+        align-self: center;
+        margin: 22.75px 0;
+        &.active{
+            border-top: 4px solid ;
+            border-bottom:4px solid ;
+            background-color: v.$orange;
+            box-shadow: 0px 3px 10px #ff1b1b;
+            border-top-color: #FF1B1B;
+            border-bottom-color: #FFB914;
+            background-image:         
+            linear-gradient(#FF1B1B, #FFB914),
+            linear-gradient(#FF1B1B, #FFB914);;
+            box-shadow:0px 3px 30px #FF1B1B;
+        }
+    } 
+}
+
 @media (min-width: 600px){
     section{
         padding: 45px;
@@ -237,16 +368,60 @@ section{
         }
     }
     .menu{
-        &__btn{
+        &--bleu{
+            align-items: center;
+            border-top: 4px solid ;
+            border-bottom:4px solid ;
+            background-size:4px 100%;
+            background-position:0 0, 100% 0;
+            background-repeat:no-repeat;
+            border-radius: 4px;
+            transform: skew(-3deg,0deg);
+            align-self: center;
+            margin: 22.75px 0;
             &:hover{
                 background-color: v.$purple;
             }
-            &--org{
-                &:hover{
-                    background-color: v.$gradiento;
-                }
+            &.active{
+                border-top: 4px solid ;
+                border-bottom:4px solid ;
+                background-color: v.$purple;
+                box-shadow: 0px 3px 10px #c324ff;
+                border-top-color: #2B66FF;
+                border-bottom-color: #C324FF;
+                background-image: 
+                linear-gradient(#2B66FF, #C324FF),
+                linear-gradient(#2B66FF, #C324FF);
+                box-shadow:0px 3px 30px #C324FF;
             }
         }
+        &--org{
+            align-items: center;
+            border-top: 4px solid ;
+            border-bottom:4px solid ;
+            background-size:4px 100%;
+            background-position:0 0, 100% 0;
+            background-repeat:no-repeat;
+            border-radius: 4px;
+            transform: skew(-3deg,0deg);
+            align-self: center;
+            margin: 22.75px 0;
+            &:hover{
+                background-color: v.$orange;
+            }
+            &.active{
+                border-top: 4px solid ;
+                border-bottom:4px solid ;
+                background-color: v.$orange;
+                box-shadow: 0px 3px 10px #ff1b1b;
+                border-top-color: #FF1B1B;
+                border-bottom-color: #FFB914;
+                background-image:         
+                linear-gradient(#FF1B1B, #FFB914),
+                linear-gradient(#FF1B1B, #FFB914);;
+                box-shadow:0px 3px 30px #FF1B1B;
+            }
+        } 
     }
 }
 @media (min-width: 900px){
@@ -274,6 +449,9 @@ section{
             margin: 30px 0;
             width: 240px;
             height: 75px;
+            &:hover{
+                cursor: pointer;
+            }
         }
     }
 }
@@ -295,78 +473,3 @@ section{
       }
 }
 
-.menu{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-transform: uppercase;
-    @media(min-width: v.$tablet){
-        flex-direction: row;
-        justify-content: space-around;
-   }
-   &__content{
-        @media(min-width: v.$tablet){
-            display: flex;
-            flex-direction: column;
-        }
-    }
-    &__btn{
-        background-color: transparent;
-        font-size: 49px;
-        height: 250px;
-        width: 250px;
-        border-color: v.$textcolor;
-        color: v.$textcolor;
-        margin: 10px;
-        padding-top: 55%;
-        border-radius: 12px;
-        transform: skew(-3deg,0deg);
-        &.active{
-            background-color: v.$purple;
-        }
-    }
-    &__choix{
-        font-size: 30px;
-        width: 250px;
-        padding: 0;
-        list-style: none;
-        text-align: center;
-        &--list{
-            padding: 10px;
-            margin: 10px;
-            border: solid 5px white;
-            border-image: v.$gradientv;    
-            border-image-slice: 1;
-            border-radius: 12px;
-            @media(min-width: v.$tablet){
-                &:hover{
-                    background-color: red;
-                }
-            }
-            @media(min-width: v.$tablet){
-                    &:hover{
-                        background-color: blue;
-                    }
-                }
-            }
-        }
-    }
-
-
-
-
-
-
-.menu__content{
-    .carte{
-        padding: 10px;
-        margin: 10px;
-        &--org{
-            box-shadow: 0px 3px 10px #ff1b1b;
-        }
-        &--bleu{
-            box-shadow: 0px 3px 10px #c324ff;
-        }
-        
-    }
-}
