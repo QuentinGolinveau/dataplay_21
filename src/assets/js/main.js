@@ -7,7 +7,10 @@ for(let button of buttons){
 		for(let tab of tabs){
 			tab.classList.add("hidden");
 		}
-
+		let cates = document.querySelectorAll(".menu__content");
+		for(let cate of cates){
+			cate.classList.add("test")
+		}
 		// display current tab
 		let tabId = e.currentTarget.getAttribute("data-tab");
 		let currentTab = document.getElementById(tabId);
