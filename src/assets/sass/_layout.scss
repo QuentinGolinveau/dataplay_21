@@ -6,9 +6,11 @@ body, .btn--pari{
     color: v.$textcolor;
     margin: 0;
 }
+.hidden{
+    display: none;
+}
 ul{
     list-style: none;
-    padding: 0;
 }
 a{
     color: v.$textcolor;
@@ -21,17 +23,51 @@ section{
     background-color: v.$bgcolor;
 
 }
+.landing{
+    &--1{
+        position: relative;
+        &::before{
+            content: '';
+            background-image: url(../images/Grouporange.svg);
+            max-width: 100vw;
+            background-size: 1000px;
+            background-position: 105% 75%;
+            background-repeat: no-repeat;
+            position: absolute;
+        }
+    }
+    &--2{
+        background-image: url(../images/Groupviolet.svg);
+        max-width: 100vw;
+        background-size: 1000px;
+        background-position: 105% 75%;
+        background-repeat: no-repeat;
 
+    }
+}
+.before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-image: linear-gradient(135deg, #2B66FF 0%, #C324FF 100%);;
+    box-shadow: 0px 4px 36px v.$blue;
+    border-radius: 5px;
+}
 .btn{
     &--pari{
-        width: 212px;
-        height: 45px;
-        background: linear-gradient(92.58deg, #2B66FF 0%, #C324FF 99.93%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 210px;
+        height: 60px;
+        background: linear-gradient(90deg, #2B66FF 0%, #C324FF 99.93%);
         box-shadow: 0px 3px 9px #C324FF;
         border-radius: 4px;
-        border: none;
+        text-align: center;
         align-self: center;
         margin: 22.75px 0;
+        transform: skew(-3deg,0deg);
     }
 }
 .video{ 
@@ -79,7 +115,7 @@ section{
     border-radius: 4px;
     transform: skew(-3deg,0deg);
     align-self: center;
-    margin: 30px 0;
+    margin: 30px;
     &__el{
         &--img{
             width: inherit;
@@ -102,9 +138,64 @@ section{
         box-shadow:0px 3px 30px #C324FF;
     }    
 }
+.catego{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 4px solid ;
+    border-bottom:4px solid ;
+    background-size:4px 100%;
+    background-position:0 0, 100% 0;
+    background-repeat:no-repeat;
+    border-radius: 4px;
+    transform: skew(-3deg,0deg);
+    align-self: center;
+    width: 100%;
+    margin: 22.75px 0;
+    &__el{
+        &--img{
+            width: inherit;
+        }
+    }
+    &--org{
+        border-top-color: #FF1B1B;
+        border-bottom-color: #FFB914;
+        background-image: 
+        linear-gradient(#FF1B1B, #FFB914),
+        linear-gradient(#FF1B1B, #FFB914);
+        box-shadow:0px 3px 30px #FF1B1B;
+    }
+    &--bleu{
+        border-top-color: #2B66FF;
+        border-bottom-color: #C324FF;
+        background-image: 
+        linear-gradient(#2B66FF, #C324FF),
+        linear-gradient(#2B66FF, #C324FF);
+        box-shadow:0px 3px 30px #C324FF;
+    }  
+}
+.team{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    &__el{
+        &--droite,&--gauche{
+            padding: 0;
+        }
+    }
+}
 @media (min-width: 600px){
     section{
         padding: 45px;
+    }
+    .banner{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 60px 0;
+        max-width: 80vw;
+        max-height: 40vh;
     }
     .video{
         &--mob{
@@ -114,24 +205,168 @@ section{
             display: block;
         }
     }
+    .logo{
+        max-width: 40%;
+    }
+    .title{
+        &--princ{
+            align-self: center;
+        }
+    }
+    .accroche{
+        align-self: center;
+        width: 80vw;
+    }
+    .before{
+        width: 5px;
+        height: auto;
+        background-image: linear-gradient(135deg, #2B66FF 0%, #C324FF 100%);;
+    }
+    .btn{
+        &--pari{
+            margin: 30px 0;
+        }
+    }
+    .carte{
+        width: 25vw;
+
+    }
+    .pret{
+        .title--second{
+            text-align: center;
+        }
+    }
+    .menu{
+        &__btn{
+            &:hover{
+                background-color: v.$purple;
+            }
+            &--org{
+                &:hover{
+                    background-color: v.$gradiento;
+                }
+            }
+        }
+    }
 }
 @media (min-width: 900px){
     .team{
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        width: 100%;
         &__el{
-            &--droite{
+            &--droite,&--gauche{
                 display: flex;
-                flex-direction: column-reverse;
+                flex-direction: row;
+                li{
+                    margin: 0 5%;
+                }
             }
-        } 
+        }
     }
     section{
         padding: 45px 90px;
     }
     .carte{
-        width: 30vh;
+        width: 20vw;
+    }
+    .btn{
+        &--pari{
+            margin: 30px 0;
+            width: 240px;
+            height: 75px;
+        }
     }
 }
-@media (min-width: 1200px){}
+@media (min-width: 1200px){
+    .banner{
+        align-self: center;
+        max-width: 60vw;
+    }
+    .accroche{
+        max-width: 70vw;
+    }
+}
+@keyframes down{
+    0%{
+      transform: translateY(-10px);  
+    }
+    100%{
+        transform: translateY(10px);  
+      }
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
+    @media(min-width: v.$tablet){
+        flex-direction: row;
+        justify-content: space-around;
+   }
+   &__content{
+        @media(min-width: v.$tablet){
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &__btn{
+        background-color: transparent;
+        font-size: 49px;
+        height: 250px;
+        width: 250px;
+        border-color: v.$textcolor;
+        color: v.$textcolor;
+        margin: 10px;
+        padding-top: 55%;
+        border-radius: 12px;
+        transform: skew(-3deg,0deg);
+        &.active{
+            background-color: v.$purple;
+        }
+    }
+    &__choix{
+        font-size: 30px;
+        width: 250px;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+        &--list{
+            padding: 10px;
+            margin: 10px;
+            border: solid 5px white;
+            border-image: v.$gradientv;    
+            border-image-slice: 1;
+            border-radius: 12px;
+            @media(min-width: v.$tablet){
+                &:hover{
+                    background-color: red;
+                }
+            }
+            @media(min-width: v.$tablet){
+                    &:hover{
+                        background-color: blue;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+.menu__content{
+    .carte{
+        padding: 10px;
+        margin: 10px;
+        &--org{
+            box-shadow: 0px 3px 10px #ff1b1b;
+        }
+        &--bleu{
+            box-shadow: 0px 3px 10px #c324ff;
+        }
+        
+    }
+}

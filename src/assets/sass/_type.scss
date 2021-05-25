@@ -2,6 +2,10 @@
 
 @use "_var.scss" as v;
 
+html{
+    scroll-behavior: smooth;
+}
+
 body, .btn--pari{
     font-family: v.$typo;
     font-weight: 300;
@@ -19,17 +23,6 @@ body, .btn--pari{
         margin: 30px 0 15px 0;
         text-align: center;
         letter-spacing: 2px;
-        &::before{
-            content: "";
-            position: absolute;
-            display: block;
-            width: 100%;
-            height: 5px;
-            background-image: v.$gradientb;
-            box-shadow: 0px 4px 36px v.$blue;
-            border-radius: 5px;
-            top: -15px;
-        }
     }
     &--second{
         font-size: 49px;
@@ -40,15 +33,9 @@ body, .btn--pari{
 
         &::before{
             content: "1. ";
-            background: -webkit-linear-gradient(90deg, #2B66FF 0%, #C324FF 100%);
+            background: -webkit-linear-gradient(90deg, #FF1B1B 0%, #FFB914 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-        & .deux{
-            &::before{
-                background: -webkit-linear-gradient(90deg, #FF1B1B 0%, #FFB914 100%);
-        
-            }
         }
     }
     &--name{
@@ -60,6 +47,9 @@ body, .btn--pari{
 .deux{
     &::before{
         content: "2. ";
+        background: -webkit-linear-gradient(90deg, #2B66FF 0%, #C324FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 }
 .trois{
@@ -67,9 +57,24 @@ body, .btn--pari{
         content: "3. ";
     }
 }
-.small{
-    font-size: 19px;
-    text-align: center;
+.more{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+    left: 0;
+    &__btn{
+        position: relative;
+        background-image: url(../images/dropdown.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        text-indent: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        animation: down ease-in 2s infinite alternate;
+        width: 50px;
+    }
 }
 .credits{
     font-size: 13px;
@@ -141,7 +146,7 @@ body, .btn--pari{
     }
     .title{
         &--princ{
-            font-size: 100px;
+            font-size: 79px;
         }
         &--second{
             font-size: 62px;
@@ -169,19 +174,6 @@ body, .btn--pari{
 }
 @media (min-width: 1200px){
     .title{
-        &--princ{
-            font-size: 62px;
-        }
-        &--second{
-            font-size: 49px;
-        }
-        &--trois{
-            font-size: 38px;
-        }
-        &--name{
-            margin: 22.75px 0 0 0;
-            font-size: 24px;
-        }
         .small{
             font-size: 19px;
         }
