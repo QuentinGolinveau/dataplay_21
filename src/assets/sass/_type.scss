@@ -7,14 +7,21 @@ html{
 }
 
 body, .btn--pari{
-    font-family: v.$typo;
-    font-weight: 300;
+    @font-face{
+        font-family:'Oswald', sans-serif;;
+        src: local("/src/assets/font/Oswald-Light.woff") format("woff"),
+        local("/src/assets/font/Oswald-Light.woff2") format("woff2");
+        font-weight: 300;
+    }
     font-size: 30px;
 }
 .alinea{
     display: block;
 }
 .title{
+    &--logo{
+        margin: 10px;
+    }
     &--princ{
         font-size: 62px;
         text-transform: uppercase;

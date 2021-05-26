@@ -34,3 +34,11 @@ buttons.forEach(button => {
 		
 	});
 })
+
+//---Shop---
+
+//fetch("http://julienma.be/projets/data.json").then(function(reponse){
+//    return reponse.json();
+//}).then(function(json){
+//	console.log(json);
+//});
