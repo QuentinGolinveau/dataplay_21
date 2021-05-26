@@ -111,6 +111,13 @@ body, .btn--pari{
         }
     }
 }
+.joueur{
+    &__txt{
+        font-size: 48px;
+        text-transform: uppercase;
+        margin: 10px;
+    }
+}
 @media (min-width: 600px){
     .title{
         &--princ{

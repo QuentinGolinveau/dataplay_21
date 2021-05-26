@@ -1,15 +1,14 @@
 "use strict";
 let buttons = document.querySelectorAll(".menu__btn");
-for(let button of buttons){
+//for(let button of buttons){};
+
+buttons.forEach(button => {
 	button.addEventListener("click", (e)=>{
+		let button = e.currentTarget;
 		// Hide all tabs
 		let tabs = document.querySelectorAll(".menu__choix");
 		for(let tab of tabs){
 			tab.classList.add("hidden");
-		}
-		let cates = document.querySelectorAll(".menu__content");
-		for(let cate of cates){
-			cate.classList.add("test")
 		}
 		// display current tab
 		let tabId = e.currentTarget.getAttribute("data-tab");
@@ -24,5 +23,14 @@ for(let button of buttons){
 
 		// active current button
 		e.currentTarget.classList.add("active");
+
+		let activeBtns = document.querySelectorAll(".menu__content");
+		for(let activeBtn of activeBtns){
+			activeBtn.classList.remove("test");
+		}
+
+		let parentElement = button.parentNode;
+		parentElement.classList.add("test");
+		
 	});
-};
+})
