@@ -37,8 +37,13 @@ buttons.forEach(button => {
 
 //---Shop---
 
-//fetch("http://julienma.be/projets/data.json").then(function(reponse){
+// fetch("http://julienma.be/projets/data.json").then(function(reponse){
 //    return reponse.json();
-//}).then(function(json){
-//	console.log(json);
-//});
+// }).then(function(json){
+// 	console.log(json);
+// });
+
+var curseur = document.querySelector(".curseur");
+document.addEventListener(("mousemove"),(e)=>{
+	curseur.setAttribute("style",'top:'+(e.pageY-20)+"px; left:"+(e.pageX-20)+"px;");
+})

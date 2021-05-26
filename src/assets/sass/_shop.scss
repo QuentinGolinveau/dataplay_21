@@ -1,0 +1,28 @@
+.curseur,.curseurimg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none;
+}
+
+.curseur{
+    border: 3px solid black;
+}
+
+.curseurimg{
+    background-image:none;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.curseurcercle{
+    position: absolute;
+    width:15px;
+    height: 15px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: black;
+    border-radius: 50%;
+}
