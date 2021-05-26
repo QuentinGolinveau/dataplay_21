@@ -108,11 +108,10 @@ a{
     position: fixed;
     top: 50%;
     left: 50%;
-    max-height: 100vh;
     min-width: 100%;
     min-height: 100%;
     width: auto;
-    height: 100vh;
+    background-size: cover;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
     transition: 1s opacity;
@@ -388,6 +387,7 @@ a{
         }
     }
     .accroche{
+        text-align: center;
         align-self: center;
         width: 80vw;
     }
@@ -508,6 +508,19 @@ a{
         &--bleu{
             border-color: v.$violet;
             box-shadow:0px 3px 15px v.$violet;
+            &::before{
+                background-image: url(../images/Grouporange.svg);
+                background-size: cover;
+                width: 500px;
+                height: 650px;
+                content: "";
+                position: absolute;
+                opacity: .2;
+                bottom: -350px;
+                left: -180px;
+                transform: rotate(90deg);
+                z-index: -1;
+            }
             & input[type=radio]{
                 border: 2px solid v.$blue;
                 &:checked{
@@ -521,6 +534,19 @@ a{
         &--orange{
             border-color: v.$rouge;
             box-shadow:0px 3px 15px v.$rouge;
+            &::before{
+                background-image: url(../images/Groupviolet.svg);
+                background-size: cover;
+                width: 500px;
+                height: 650px;
+                content: "";
+                position: absolute;
+                opacity: .2;
+                top: -350px;
+                right: -180px;
+                transform: rotate(130deg);
+                z-index: -1;
+            }
             & input[type=radio]{
                 border: 2px solid v.$orange;
                 &:checked{
@@ -532,16 +558,38 @@ a{
             }    
         }
     }
+    &__submit{
+        display: flex;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        &--btn{
+            margin: 10px;
+            font-size: 30px;
+            text-transform: uppercase;
+            color: v.$textcolor;
+            background-color: transparent;
+            border: 4px solid v.$textcolor;
+            padding: 10px;
+            transform: skew(-3deg, 0deg);
+            border-radius: 4px;
+            &:hover{
+                background-color: v.$textcolor;
+                color: v.$bgcolor;
+            }
+        }
+    }
+    .head{
+        height: 100vh;
+    }
+    .separateur{
+        align-self: center;
+        width: 4px;
+        height: 50vh;
+        background-color: #e5e5e5;
+        border-radius: 15px;
+    }
 }
-.separateur{
-    align-self: center;
-    width: 4px;
-    height: 50vh;
-    background-color: #e5e5e5;
-    border-radius: 15px;
-}
-
-
 @media (min-width: 900px){
     .team{
         display: flex;
@@ -579,7 +627,8 @@ a{
         max-width: 60vw;
     }
     .accroche{
-        max-width: 70vw;
+        max-width: 50vw;
+        text-align: center;
     }
 }
 @keyframes down{
