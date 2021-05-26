@@ -1,7 +1,7 @@
 //margin padding
 @use "_var.scss" as v;
 
-body, .btn--pari{
+body, .btn--pari, footer{
     background-color: v.$bgcolor;
     color: v.$textcolor;
     margin: 0;
@@ -424,6 +424,7 @@ a{
         max-width: 70vw;
         &__btn{
             align-items: flex-end;
+            font-family: v.$typo;
         }
         &--bleu{
             &:hover{
@@ -603,6 +604,9 @@ a{
         height: 50vh;
         background-color: #e5e5e5;
         border-radius: 15px;
+        &--footer{
+
+        }
     }
 }
 .jeton{
@@ -641,7 +645,7 @@ a{
 .shop{
     overflow-x: scroll;
     max-width: 80vw;
-    margin: auto;
+    margin: 60px auto;
     &::-webkit-scrollbar {
         width: 10px;
         left: 50px;
@@ -652,7 +656,11 @@ a{
     }  
     &::-webkit-scrollbar-thumb {
         border-radius: 10px;
-        background: v.$gradiento; 
+        background: v.$gradientr; 
+    }
+    &__img{
+        width: 150px;
+        height: 150px;
     }
     &__row{
         display: -webkit-box;
@@ -671,6 +679,9 @@ a{
         height: 200px;
         font-size: 20px;
         text-align: center;
+        &:hover{
+            transform: skew(0deg, 0deg);
+        }
         &--pick{
             background-color: rgba(255, 255, 255, 0.2);
         }

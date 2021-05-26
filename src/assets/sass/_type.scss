@@ -2,20 +2,21 @@
 
 @use "_var.scss" as v;
 
-@font-face {
-    font-family: 'oswaldregular';
-    src: url('oswald-variablefont_wght-webfont.woff2') format('woff2'),
-         url('oswald-variablefont_wght-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+//@font-face {
+//    font-family: 'oswaldregular';
+//    src: url('oswald-variablefont_wght-webfont.woff2') format('woff2'),
+//         url('oswald-variablefont_wght-webfont.woff') format('woff');
+//    font-weight: 300 700;
+//    font-style: normal;
+//}
 
 html{
     scroll-behavior: smooth;
 }
 body, .btn--pari{
     font-size: 30px;
-    font-family: 'oswaldregular';
+    font-family: v.$typo;
+    font-weight: 300;
 }
 .alinea{
     display: block;
@@ -29,7 +30,7 @@ body, .btn--pari{
         text-transform: uppercase;
         display: inline-block;
         position: relative;
-        margin: 30px 0 15px 0;
+        margin: 30px 0 0 30px;
         text-align: center;
         letter-spacing: 2px;
     }
@@ -50,6 +51,14 @@ body, .btn--pari{
     &--name{
         margin: 22.75px 0 0 0;
         font-size: 24px;
+    }
+    &--neon{
+        text-shadow: 0px 3px 9px v.$textcolor;
+        margin: 0;
+        position: absolute;
+        top: 60px;
+        left: 20%;
+        text-transform: uppercase;
     }
 }
 
@@ -90,7 +99,7 @@ body, .btn--pari{
 }
 .btn{
     &--pari{
-        font-family: 'oswaldlight';
+        font-family: v.$typo;
         font-size: 24px;
         font-weight: 700;
         text-transform: uppercase;

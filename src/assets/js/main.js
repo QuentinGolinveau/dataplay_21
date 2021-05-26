@@ -47,11 +47,51 @@ var curseur = document.querySelector(".curseur");
 var curseurcercle = document.querySelector(".curseurcercle");
 var curseurimage = document.querySelector(".curseurimg");
 
-document.addEventListener(("mousemove"),(e)=>{
-	curseur.setAttribute("style",'top:'+(e.pageY-20)+"px; left:"+(e.pageX-20)+"px;");
-})
-
 var shopselect = document.querySelectorAll(".shop__select");
+
+var prixcurseur = 0;
+var logo;
+
+var montantjeton = document.querySelector(".jeton");
+var jeton = localStorage.getItem("Jetons");
+if(jeton==="null"){
+	jeton = 0;
+	localStorage.setItem("Jetons",0);
+}
+montantjeton.innerHTML = ""+jeton+"";
+
+
+if(curseur){
+	document.addEventListener(("mousemove"),(e)=>{
+		curseur.setAttribute("style",'top:'+(e.pageY-20)+"px; left:"+(e.pageX-20)+"px;");
+	})
+}
+
+function DebloquerCurseur(button,logo,prixcurseur,metacurseur){  
+	//resetButton();
+	if(button.classList.contains("bloquer") && jeton >= prixcurseur ){
+		curseurimage.style.backgroundImage=logo;
+		jeton = jeton-prixcurseur;
+		montantjeton.innerHTML = ""+jeton+"";
+		ButtonClassDebloquage(button);
+		curseurcercle.style.backgroundColor = "transparent";
+		localStorage.setItem("logolast",logo);
+		localStorage.setItem("Jetons",jeton);
+		localStorage.setItem(""+metacurseur+"",true);
+		localStorage.setItem("clique",""+metacurseur+"");
+	}else if(button.classList.contains("acheter")){
+		curseurimage.style.backgroundImage=logo;
+		curseurcercle.style.backgroundColor = "transparent";
+		localStorage.setItem("logolast",logo);
+		localStorage.setItem("clique",""+metacurseur+"");
+	}else{
+		alert("pas assez de jetons");
+	}
+	if(!button.classList.contains("bloquer")){
+		button.innerHTML="Equipé";
+	}
+}
+
 shopselect.forEach(shopselect=>{
 	var  metacurseur = shopselect.getAttribute("meta-cursor");
 	shopselect.addEventListener(("click"),(e)=>{   
@@ -60,7 +100,9 @@ shopselect.forEach(shopselect=>{
 			curseurimage.style.backgroundImage="none";
 			curseurcercle.style.backgroundColor = "black";
 		}else if(metacurseur=="vitality"){
-			curseurcercle.style.backgroundColor = "Yellow";
+			logo = "url('Vitality_logo.svg')";
+			prixcurseur = 30;
+			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur);
 		}
 	})
 })
