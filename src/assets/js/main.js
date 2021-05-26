@@ -37,7 +37,7 @@ buttons.forEach(button => {
 
 //---Shop---
 
-fetch("data.json").then(function(reponse){
+fetch("assets/js/data.json").then(function(reponse){
    return reponse.json();
 }).then(function(json){
 	console.log(json);

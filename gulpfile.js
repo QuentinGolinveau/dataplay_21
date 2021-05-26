@@ -22,7 +22,7 @@ const styles = () => {
 		autoprefixer({ overrideBrowserslist: ['last 2 versions', 'ie >= 10'] })
 	]))
 	.pipe(sourcemaps.write('./'))
-	.pipe(gulp.dest( './dist/assets/css/'))
+	.pipe(gulp.dest( './dist/assets/css'))
 	.pipe(browserSyncServer.stream());
 }
 
@@ -45,10 +45,10 @@ const video = () => {
 
 const font = () => {
 	return gulp.src([
-		'./src/assets/font/**/*.woff',
-		'./src/assets/font/**/*.woff2',
+		'./src/assets/css/**/*.woff',
+		'./src/assets/css/**/*.woff2',
 		])
-		.pipe(gulp.dest( './dist/assets/font/'));
+		.pipe(gulp.dest( "./dist/assets/css"));
 }
 
 const html = () => {
