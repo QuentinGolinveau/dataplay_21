@@ -1,7 +1,7 @@
 //margin padding
 @use "_var.scss" as v;
 
-body, .btn--pari, footer{
+body, .btn--pari, .footer{
     background-color: v.$bgcolor;
     color: v.$textcolor;
     margin: 0;
@@ -361,6 +361,21 @@ a{
         }
     } 
 }
+.separateur{
+    align-self: center;
+    width: 4px;
+    height: 50vh;
+    background-color: #e5e5e5;
+    border-radius: 15px;
+    &--footer{
+        height: 4px;
+        width: 50vw;
+    }
+}
+.footer{
+    display: flex;
+    flex-direction: column;
+}
 .hidden{
     display: none;
 }
@@ -393,6 +408,11 @@ a{
     .title{
         &--princ{
             align-self: center;
+        }
+        &--logo{
+            &::before{
+                
+            }
         }
     }
     .accroche{
@@ -598,16 +618,6 @@ a{
     .head{
         height: 100vh;
     }
-    .separateur{
-        align-self: center;
-        width: 4px;
-        height: 50vh;
-        background-color: #e5e5e5;
-        border-radius: 15px;
-        &--footer{
-
-        }
-    }
 }
 .jeton{
     display: flex;
@@ -641,6 +651,15 @@ a{
         transform: translateY(-50%);
         padding-right: 20px;
     }
+    &:hover{
+        border-top-color: v.$rouge;
+        border-bottom-color: v.$orange;
+        background-image: linear-gradient(v.$rouge, v.$orange),linear-gradient(v.$rouge, v.$orange);
+        transform: skew(0deg, 0deg);
+        &::after{
+            background-image: url(../images/rl-ballred.png);
+        }
+    }
 }
 .shop{
     overflow-x: scroll;
@@ -658,9 +677,31 @@ a{
         border-radius: 10px;
         background: v.$gradientr; 
     }
+    &::before{
+        background-image: url(../images/grouporange.svg);
+        background-size: cover;
+        width: 600px;
+        height: 750px;
+        content: "";
+        position: absolute;
+        opacity: .2;
+        top: -100px;
+        right: -280px;
+    }
     &__img{
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+    }
+    &__name{
+        margin: 0;
+        font-size: 13px;
+    }
+    &__btn{
+       background: transparent; 
+       border: none;
+       font-size: 30px;
+       color: v.$textcolor;
     }
     &__row{
         display: -webkit-box;

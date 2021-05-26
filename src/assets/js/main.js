@@ -61,6 +61,11 @@ if(jeton==="null"){
 montantjeton.innerHTML = ""+jeton+"";
 
 
+var cliquer = localStorage.getItem("clique");
+var logoLast = localStorage.getItem("logolast");
+
+console.log("Last curseur :"+cliquer+", Last Logo :"+logoLast);
+
 if(curseur){
 	document.addEventListener(("mousemove"),(e)=>{
 		curseur.setAttribute("style",'top:'+(e.pageY-20)+"px; left:"+(e.pageX-20)+"px;");
@@ -73,7 +78,7 @@ function DebloquerCurseur(button,logo,prixcurseur,metacurseur){
 		curseurimage.style.backgroundImage=logo;
 		jeton = jeton-prixcurseur;
 		montantjeton.innerHTML = ""+jeton+"";
-		ButtonClassDebloquage(button);
+		// ButtonClassDebloquage(button);
 		curseurcercle.style.backgroundColor = "transparent";
 		localStorage.setItem("logolast",logo);
 		localStorage.setItem("Jetons",jeton);
@@ -100,7 +105,7 @@ shopselect.forEach(shopselect=>{
 			curseurimage.style.backgroundImage="none";
 			curseurcercle.style.backgroundColor = "black";
 		}else if(metacurseur=="vitality"){
-			logo = "url('Vitality_logo.svg')";
+			logo = "url('assets/images/Vitality_logo.png')";
 			prixcurseur = 30;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur);
 		}
