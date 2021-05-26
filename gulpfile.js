@@ -55,6 +55,10 @@ const html = () => {
 	return gulp.src('./src/*.html')
 		.pipe(gulp.dest( './dist/'));
 }
+ const json = () => {
+	 return gulp.src('./src/assets/js/**/*.json')
+	 .pipe(gulp.dest('./dist/assets/js/'))
+ }
 
 
 const watchFiles = () => {
@@ -71,6 +75,7 @@ const watchFiles = () => {
 		"./src/assets/images/**/*.gif",
 		"./src/assets/images/**/*.svg"
 	], compressImages);
+	gulp.watch("./src/assets/js/**/*json", json)
 	gulp.watch("./src/*.html", gulp.series(html, browserReload));
 }
 
@@ -103,7 +108,7 @@ const compressImages = () => {
 	 .pipe(gulp.dest('./dist/assets/images/'))
 }
 
-const build = gulp.series(html, styles, javascript, compressImages, video, font);
+const build = gulp.series(html, styles, javascript, compressImages, video, font, json);
 const watch = gulp.series(build, gulp.parallel(watchFiles, browserSync));
 const compress = gulp.series(compressImages);
 

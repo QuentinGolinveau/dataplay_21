@@ -37,13 +37,30 @@ buttons.forEach(button => {
 
 //---Shop---
 
-// fetch("http://julienma.be/projets/data.json").then(function(reponse){
-//    return reponse.json();
-// }).then(function(json){
-// 	console.log(json);
-// });
+fetch("data.json").then(function(reponse){
+   return reponse.json();
+}).then(function(json){
+	console.log(json);
+});
 
 var curseur = document.querySelector(".curseur");
+var curseurcercle = document.querySelector(".curseurcercle");
+var curseurimage = document.querySelector(".curseurimg");
+
 document.addEventListener(("mousemove"),(e)=>{
 	curseur.setAttribute("style",'top:'+(e.pageY-20)+"px; left:"+(e.pageX-20)+"px;");
+})
+
+var shopselect = document.querySelectorAll(".shop__select");
+shopselect.forEach(shopselect=>{
+	var  metacurseur = shopselect.getAttribute("meta-cursor");
+	shopselect.addEventListener(("click"),(e)=>{   
+		console.log(metacurseur);
+		if(metacurseur=="normal"){
+			curseurimage.style.backgroundImage="none";
+			curseurcercle.style.backgroundColor = "black";
+		}else if(metacurseur=="vitality"){
+			curseurcercle.style.backgroundColor = "Yellow";
+		}
+	})
 })
