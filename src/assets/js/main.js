@@ -268,9 +268,9 @@ var logo;
 
 var montantjeton = document.querySelector(".jeton");
 var jeton = localStorage.getItem("Jetons");
-if(jeton==="null"){
-	jeton = 0;
-	localStorage.setItem("Jetons",0);
+if(jeton===null){
+	jeton = 15;
+	localStorage.setItem("Jetons",15);
 }
 if(montantjeton){
 	montantjeton.innerHTML = ""+jeton+"";
@@ -290,28 +290,36 @@ var havocEtat = localStorage.getItem("havoc");
 var sinsEtat = localStorage.getItem("sins");
 var cliquer = localStorage.getItem("clique");
 var logoLast = localStorage.getItem("logolast");
+if(cliquer===null){   
+    cliquer = "normal";
+    localStorage.setItem("clique","normal");
+}
+if(logoLast===null){   
+    logoLast="url('assets/images/curseur.svg')";
+    localStorage.setItem("logolast","url('assets/images/curseur.svg')");
+}
 
 console.log("Last curseur :"+cliquer+", Last Logo :"+logoLast+", Vitality :"+vitalityEtat+", NRG :"+nrgEtat+", SSG :"+ssgEtat+", Dignitas :"+dignitasEtat+", veloce :"+veloceEtat+", pk :"+pkEtat+", reciprocity :"+reciprocityEtat+", renegades :"+renegadesEtat+", eunited :"+eunitedEtat+", Lowkey :"+lowkeyEtat+", havoc :"+havocEtat+", sins :"+sinsEtat);
 
 //--- Reset shop ligne 68 et 92 de mon code
-
 if(curseur){
-	document.addEventListener(("mousemove"),(e)=>{
+	window.addEventListener(("mousemove"),(e)=>{
 		curseur.setAttribute("style",'top:'+(e.pageY)+"px; left:"+(e.pageX)+"px;");
 	})
+
 	//---petit prob quand tu joue avec la barre
 }
 
 function ButtonClassDebloquage(button, div){
 	div.classList.add("acheter");
 	div.classList.remove("bloquer");
-	button.innerHTML="Equipable";
+	button.innerHTML="Acheté";
 }
 
 function resetButton(){
 	shopselect.forEach(shopselect=>{
 		if(shopselect.classList.contains("acheter")){
-			shopselect.children[2].innerHTML="Equipable";
+			shopselect.children[2].innerHTML="Acheté";
 		}
 		shopselect.classList.remove("shop__select--pick");
 	})
@@ -340,8 +348,9 @@ function DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild){
 	}
 }
 
-function imageLocalStorage(button){
+function imageLocalStorage(button,shopselect){
 	curseurimage.style.backgroundImage=logoLast;
+    shopselect.classList.add("shop__select--pick");
 	button.innerHTML=("Equipé");
 }
 
@@ -414,76 +423,103 @@ shopselect.forEach(shopselect=>{
 	})
 	if(metacurseur==="normal"){
 		curseurimage.style.backgroundImage="url('assets/images/curseur.svg')";
-		shopselect.children[2].innerHTML="Equipable";
+		shopselect.children[2].innerHTML="Acheté";
 		if(cliquer==="normal"){
 			shopselect.children[2].innerHTML="Equipé";
+            shopselect.classList.add("shop__select--pick");
 		}
 	}
 	else if(metacurseur==="vitality" && vitalityEtat==="true"){
 		ButtonClassDebloquage(shopselect.children[2], shopselect);
 		if(cliquer ==="vitality"){
-            imageLocalStorage(shopselect.children[2]);
+            imageLocalStorage(shopselect.children[2], shopselect);
 		}
 	}
 	else if(metacurseur==="nrg" && nrgEtat==="true"){
 		ButtonClassDebloquage(shopselect.children[2], shopselect);
         if(cliquer ==="nrg"){
-            imageLocalStorage(shopselect.children[2]);
+            imageLocalStorage(shopselect.children[2], shopselect);
         }
     }else if(metacurseur==="ssg" && ssgEtat==="true"){
 		ButtonClassDebloquage(shopselect.children[2], shopselect);
         if(cliquer ==="ssg"){
-            imageLocalStorage(shopselect.children[2]);
+            imageLocalStorage(shopselect.children[2], shopselect);
         }
     }else if(metacurseur==="dignitas" && dignitasEtat==="true"){
 		ButtonClassDebloquage(shopselect.children[2], shopselect);
         if(cliquer ==="dignitas"){
-            imageLocalStorage(shopselect.children[2]);
+            imageLocalStorage(shopselect.children[2], shopselect);
         }
     }
 	else if(metacurseur==="veloce" && veloceEtat==="true"){
 		ButtonClassDebloquage(shopselect.children[2], shopselect);
         if(cliquer ==="veloce"){
-            imageLocalStorage(shopselect.children[2]);
+            imageLocalStorage(shopselect.children[2], shopselect);
         }
     }else if(metacurseur==="pk" && pkEtat==="true"){
 		ButtonClassDebloquage(shopselect.children[2], shopselect);
     	if(cliquer ==="pk"){
-            imageLocalStorage(shopselect.children[2]);
+            imageLocalStorage(shopselect.children[2], shopselect);
         	}
     }else if(metacurseur==="reciprocity" && reciprocityEtat==="true"){
 		ButtonClassDebloquage(shopselect.children[2], shopselect);
         if(cliquer ==="reciprocity"){
-            imageLocalStorage(shopselect.children[2]);
+            imageLocalStorage(shopselect.children[2], shopselect);
         }
     }else if(metacurseur==="renegades" && renegadesEtat==="true"){
 		ButtonClassDebloquage(shopselect.children[2], shopselect);
         if(cliquer ==="renegades"){
-            imageLocalStorage(shopselect.children[2]);
+            imageLocalStorage(shopselect.children[2], shopselect);
         }
     }else if(metacurseur==="eunited" && eunitedEtat==="true"){
 		ButtonClassDebloquage(shopselect.children[2], shopselect);
         if(cliquer ==="eunited"){
-            imageLocalStorage(shopselect.children[2]);
+            imageLocalStorage(shopselect.children[2], shopselect);
         }
     }else if(metacurseur==="low" && lowkeyEtat==="true"){
 		ButtonClassDebloquage(shopselect.children[2], shopselect);
         if(cliquer ==="low"){
-            imageLocalStorage(shopselect.children[2]);
+            imageLocalStorage(shopselect.children[2], shopselect);
         }
     }else if(metacurseur==="havoc" && havocEtat==="true"){
 		ButtonClassDebloquage(shopselect.children[2], shopselect);
         if(cliquer ==="havoc"){
-            imageLocalStorage(shopselect.children[2]);
+            imageLocalStorage(shopselect.children[2], shopselect);
         }
     }else if(metacurseur==="sins" && sinsEtat==="true"){
 		ButtonClassDebloquage(shopselect.children[2], shopselect);
         if(cliquer ==="sins"){
-            imageLocalStorage(shopselect.children[2]);
+            imageLocalStorage(shopselect.children[2], shopselect);
         }
     }
 })
 
-if(cliquer ==="vitality" && vitalityEtat==="true"){
-	curseurimage.style.backgroundImage="url('assets/images/curseur_vitality.svg')";
+if(curseurimage){
+    if(cliquer ==="normal" || cliquer ===null){
+        curseurimage.style.backgroundImage=logoLast;
+    }else if(cliquer ==="vitality" && vitalityEtat==="true"){
+        curseurimage.style.backgroundImage=logoLast;
+    }else if(cliquer==="nrg" && nrgEtat==="true"){
+        curseurimage.style.backgroundImage=logoLast;
+    }else if(cliquer==="ssg" && ssgEtat==="true"){
+        curseurimage.style.backgroundImage=logoLast;
+    }else if(cliquer==="dignitas" && dignitasEtat==="true"){
+        curseurimage.style.backgroundImage=logoLast;
+    }else if(cliquer==="veloce" && veloceEtat==="true"){
+        curseurimage.style.backgroundImage=logoLast;
+    }else if(cliquer==="pk" && pkEtat==="true"){
+        curseurimage.style.backgroundImage=logoLast;
+    }else if(cliquer==="reciprocity" && reciprocityEtat==="true"){
+        curseurimage.style.backgroundImage=logoLast;
+    }else if(cliquer==="renegades" && renegadesEtat==="true"){
+        curseurimage.style.backgroundImage=logoLast;
+    }else if(cliquer==="eunited" && eunitedEtat==="true"){
+        curseurimage.style.backgroundImage=logoLast;
+    }else if(cliquer==="low" && lowkeyEtat==="true"){
+        curseurimage.style.backgroundImage=logoLast;
+    }else if(cliquer==="havoc" && havocEtat==="true"){
+        curseurimage.style.backgroundImage=logoLast;
+    }else if(cliquer==="sins" && sinsEtat==="true"){
+        curseurimage.style.backgroundImage=logoLast;
+    }
 }

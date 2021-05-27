@@ -5,6 +5,7 @@ body, .btn--pari{
     background-color: v.$bgcolor;
     color: v.$textcolor;
     margin: 0;
+    overflow-x: hidden;
 }
 button{
     font-family: v.$typo;
@@ -498,7 +499,7 @@ a{
         text-transform: uppercase;
     }
 }
-.nav, .nav_choix{
+.nav{
     display: flex;
 }
 .nav_choix{
@@ -506,10 +507,13 @@ a{
     top: -10px;
     left: 15vw;
     margin: 0;
+    padding: 0;
+    justify-content: space-around;
     &__el{
         display: flex;
         justify-content: flex-end;
         flex-direction: column;
+        align-self: end;
         align-items: center;
         border-top: 4px solid ;
         border-bottom:4px solid ;
@@ -525,13 +529,14 @@ a{
         background-image: 
         linear-gradient(#2B66FF, #C324FF),
         linear-gradient(#2B66FF, #C324FF);
+        margin-right: 5px;
         &:hover{
             background: linear-gradient(180deg, #2B66FF 0%, #C324FF 99.93%);
             cursor: pointer;
         }
         &.cecinpactif{
-            padding-top: 45px;
             transform: translateY(9px) skew(-3deg,0deg);
+            background: linear-gradient(180deg, #2B66FF 0%, #C324FF 99.93%) 25%;
         }
     }
 }
@@ -650,17 +655,17 @@ a{
         background-position:0 0, 100% 0;
         background-repeat:no-repeat;
         border-radius: 4px;
-        box-shadow: 0px 3px 10px #c324ff;
         border-top-color: #2B66FF;
         border-bottom-color: #C324FF;
         background-image: 
         linear-gradient(#2B66FF, #C324FF),
         linear-gradient(#2B66FF, #C324FF);
-        box-shadow:0px 3px 30px #C324FF;
-        margin: 40px;
+        margin: 80px 40px;
         padding: 20px;
         position: relative;
         background-color: rgba(0,0,0,.2);
+        padding-bottom: 120px;
+
     }
     &::-webkit-scrollbar {
         width: 10px;
@@ -673,6 +678,9 @@ a{
     &::-webkit-scrollbar-thumb {
         border-radius: 10px;
         background: v.$gradientv; 
+    }
+    &__question{
+        padding-left: 40px;
     }
     &__compteur{
         display: flex;
@@ -692,15 +700,17 @@ a{
             border: none;
             background-position: center;
             outline: none;
-            width: 20px;
-            display: block;        
+            width: 40px;
+            display: block;     
+            background-image: url(../images/dropdown.svg);  
+            &:hover{
+                filter: brightness(150%);
+            } 
         }
         &--moins{
-            background-image: url(../images/dropdown.svg);
             transform: rotate(90deg);
         }
         &--plus{
-            background-image: url(../images/dropdown.svg);
             transform: rotate(-90deg);
         }
         &--number{
@@ -727,7 +737,125 @@ a{
             border-bottom-color: #c324ff;
             background-image: linear-gradient(#2B66FF, #C324FF),linear-gradient(#2B66FF, #C324FF);
             align-items: center;  
-            padding: 10px 20px;      
+            padding: 10px 20px;  
+            &:hover{
+                background: linear-gradient(180deg, #2B66FF 0%, #C324FF 99.93%);
+            }    
+        }
+    }
+    &__graph{
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        height: 300px;
+        border-bottom: 2px solid v.$textcolor;
+        width: 50%;
+        margin: 40px auto;
+        & div{
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            padding: 10px;
+            padding-top: 0;
+            height: 300px;
+            width: 20px;
+            background-color: #990099;
+            justify-content: center;
+
+            & p{
+                bottom: 50px;
+                position: absolute;
+                margin: 0;
+                & span{
+                    display: block;
+                }
+            }
+        }
+    }
+}
+.compare_content{
+    border-top: 4px solid ;
+    border-bottom:4px solid ;
+    background-size:4px 100%;
+    background-position:0 0, 100% 0;
+    background-repeat:no-repeat;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    background-color: rgba(0,0,0,.2);
+    border-top-color: #FF1B1B;
+    border-bottom-color: #FFB914;
+    background-image:         
+    linear-gradient(#FF1B1B, #FFB914),
+    linear-gradient(#FF1B1B, #FFB914);
+    &--team{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.compare{
+    &__equipe{
+        & input[type=checkbox]{
+            appearance: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+            position: relative;
+            outline: none;
+            cursor: pointer;
+        } 
+        &--bleu{
+            justify-content: end;
+            &::before{
+                background-image: url(../images/grouporange.svg);
+                background-size: cover;
+                width: 500px;
+                height: 650px;
+                content: "";
+                position: absolute;
+                opacity: .2;
+                bottom: -350px;
+                left: -180px;
+                transform: rotate(90deg);
+                z-index: -1;
+            }
+            & input[type=checkbox]{
+                border: 2px solid v.$blue;
+                &:hover{
+                    background-color: v.$blue;
+                }
+                &:checked{
+                    background-image: v.$gradientv;
+                }
+            }   
+        }
+        &--orange{
+            label{
+                padding-right: 15px;
+            }
+            text-align: end;
+            &::before{
+                background-image: url(../images/groupviolet.svg);
+                background-size: cover;
+                width: 500px;
+                height: 650px;
+                content: "";
+                position: absolute;
+                opacity: .2;
+                top: -350px;
+                right: -180px;
+                transform: rotate(130deg);
+                z-index: -1;
+            }
+            & input[type=checkbox]{
+                border: 2px solid v.$orange;
+                &:hover{
+                    background-color: v.$orange;
+                }
+                &:checked{
+                    background-image: v.$gradiento;
+                }
+            }     
         }
     }
 }
