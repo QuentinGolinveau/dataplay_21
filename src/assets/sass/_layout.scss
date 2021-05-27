@@ -6,10 +6,14 @@ body, .btn--pari{
     color: v.$textcolor;
     margin: 0;
     overflow-x: hidden;
+    cursor: none;
 }
 button{
     font-family: v.$typo;
 }
+
+a
+
 .body--landing{
     &::-webkit-scrollbar {
         width: 15px;
@@ -645,7 +649,7 @@ a{
 }
 .bet{
     overflow: auto;
-    height: 70vh;
+    height: 75vh;
     max-width: 80vw;
     margin: 60px auto;
     &__content{
@@ -660,7 +664,7 @@ a{
         background-image: 
         linear-gradient(#2B66FF, #C324FF),
         linear-gradient(#2B66FF, #C324FF);
-        margin: 80px 40px;
+        margin:40px;
         padding: 20px;
         position: relative;
         background-color: rgba(0,0,0,.2);
@@ -747,7 +751,7 @@ a{
         display: flex;
         justify-content: space-around;
         align-items: flex-end;
-        height: 300px;
+        height: 200px;
         border-bottom: 2px solid v.$textcolor;
         width: 50%;
         margin: 40px auto;
@@ -756,7 +760,7 @@ a{
             display: flex;
             padding: 10px;
             padding-top: 0;
-            height: 300px;
+            height: 200px;
             width: 20px;
             background-color: #990099;
             justify-content: center;
@@ -1123,6 +1127,17 @@ a{
             background-image: linear-gradient(#2B66FF, #C324FF),linear-gradient(#2B66FF, #C324FF);
         }
     }
+    .form{
+        background-color: black;
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        padding: 0;
+        z-index: 20;
+        overflow: hidden;
+    }
+    
 }
 @media (min-width: 900px){
     .team{

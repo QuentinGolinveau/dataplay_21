@@ -38,11 +38,6 @@ const javascript = () => {
 	  .pipe(browserSyncServer.stream());
 }
 
-const ico = () => {
-	return gulp.src('./src/assets/video/**/*.ico')
-		.pipe(gulp.dest( './dist/assets/images/'));
-}
-
 const video = () => {
 	return gulp.src('./src/assets/video/**/*.mp4')
 		.pipe(gulp.dest( './dist/assets/video/'));
@@ -66,6 +61,7 @@ const watchFiles = () => {
 		"./src/assets/images/**/*.jpg",
 		"./src/assets/images/**/*.png",
 		"./src/assets/images/**/*.gif",
+		'./src/assets/video/**/*.ico',
 		"./src/assets/images/**/*.svg"
 	], compressImages);
 	gulp.watch("./src/assets/js/**/*json", json)
@@ -92,6 +88,7 @@ const compressImages = () => {
 		"./src/assets/images/**/*.jpg",
 		"./src/assets/images/**/*.png",
 		"./src/assets/images/**/*.gif",
+		'./src/assets/video/**/*.ico',
 		"./src/assets/images/**/*.svg"
 	  ])
 	 .pipe(imagemin({
@@ -101,7 +98,7 @@ const compressImages = () => {
 	 .pipe(gulp.dest('./dist/assets/images/'))
 }
 
-const build = gulp.series(html, styles, javascript, compressImages, video, json, ico);
+const build = gulp.series(html, styles, javascript, compressImages, video, json);
 const watch = gulp.series(build, gulp.parallel(watchFiles, browserSync));
 const compress = gulp.series(compressImages);
 

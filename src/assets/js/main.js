@@ -374,47 +374,47 @@ shopselect.forEach(shopselect=>{
 			prixcurseur = 30;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}else if(metacurseur=="nrg"){
-			logo ="url('assets/images/nrg_logo.png')";
+			logo = "url('assets/images/curseur_nrg.svg')";
 			prixcurseur = 30;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}else if(metacurseur=="ssg"){
-			logo ="url('assets/images/spacestationgaming_logo.png')";
+			logo = "url('assets/images/curseur_spacestation.svg')";
 			prixcurseur = 30;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}else if(metacurseur=="dignitas"){
-			logo ="url('assets/images/dignitas.png')";
+			logo = "url('assets/images/curseur_dignitas.svg')";
 			prixcurseur = 30;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}else if(metacurseur=="veloce"){
-			logo ="url('assets/images/veloce_logo.png')";
+			logo = "url('assets/images/curseur_veloce.svg')";
 			prixcurseur = 25;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}else if(metacurseur=="pk"){
-            logo ="url('assets/images/pittsburghknights_logo.png')";
+			logo = "url('assets/images/curseur_knights.svg')";
             prixcurseur = 25;
             DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
         }else if(metacurseur=="reciprocity"){
-			logo ="url('assets/images/reciprocity_logo.png')";
+			logo = "url('assets/images/curseur_reciprocity.svg')";
 			prixcurseur = 25;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}else if(metacurseur=="renegades"){
-			logo ="url('assets/images/renegades_logo.png')";
+			logo = "url('assets/images/curseur_renegades.svg')";
 			prixcurseur = 25;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}else if(metacurseur=="eunited"){
-			logo ="url('assets/images/eunited_logo.png')";
+			logo = "url('assets/images/curseur_eunited.svg')";
 			prixcurseur = 15;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}else if(metacurseur=="low"){
-			logo ="url('assets/images/lowkey_logo.png')";
+			logo = "url('assets/images/curseur_lowkey.svg')";
 			prixcurseur = 15;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}else if(metacurseur=="havoc"){
-			logo ="url('assets/images/havoc_logo.png')";
+			logo = "url('assets/images/curseur_havoc.svg')";
 			prixcurseur = 15;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}else if(metacurseur=="sins"){
-			logo ="url('assets/images/threesins_logo.png')";
+			logo = "url('assets/images/curseur_sins.svg')";
 			prixcurseur = 15;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}
