@@ -35,6 +35,8 @@ buttons.forEach(button => {
 	});
 })
 
+
+
 let ajd = new Date();
 let year = ajd.getFullYear();
 let copyright = document.querySelector(".copyright");

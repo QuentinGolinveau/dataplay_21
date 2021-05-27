@@ -8,12 +8,10 @@ body, .btn--pari{
     overflow-x: hidden;
     cursor: none;
 }
+
 button{
     font-family: v.$typo;
 }
-
-a
-
 .body--landing{
     &::-webkit-scrollbar {
         width: 15px;
