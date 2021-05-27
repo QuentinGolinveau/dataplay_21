@@ -6,9 +6,13 @@ body, .btn--pari{
     color: v.$textcolor;
     margin: 0;
     overflow-x: hidden;
-    cursor: none;
 }
-
+body,a, button, input{
+    cursor: none;
+    &:hover{
+        cursor: none;
+    }
+}
 button{
     font-family: v.$typo;
 }
@@ -127,7 +131,6 @@ a{
         border-bottom-color: #c324ff;
         background-image: linear-gradient(#2B66FF, #C324FF),linear-gradient(#2B66FF, #C324FF);
         &:hover{
-            cursor: pointer;
             background: linear-gradient(180deg, #2B66FF 0%, #C324FF 99.93%);
         }   
     }
@@ -324,8 +327,6 @@ a{
         border-radius: 12px;
         transform: skew(-3deg,0deg);
         justify-content: flex-end;
-        cursor: pointer;
-
         &.active{
             border: none;
         }
@@ -448,7 +449,7 @@ a{
 .footer{
     display: flex;
     flex-direction: column;
-    padding-bottom: 45px;
+    padding-bottom: 30px;
     bottom: 0;
     a{
         display: flex;
@@ -464,7 +465,7 @@ a{
         justify-content: space-between;
         width: 75vw;
         align-self: center;
-        padding: 45px 0 0 0;
+        padding: 20px 0 0 0;
     }
     .copyright{
         font-size: 13px;
@@ -534,7 +535,6 @@ a{
         margin-right: 5px;
         &:hover{
             background: linear-gradient(180deg, #2B66FF 0%, #C324FF 99.93%);
-            cursor: pointer;
         }
         &.cecinpactif{
             transform: translateY(9px) skew(-3deg,0deg);
@@ -545,6 +545,16 @@ a{
 
 .hidden{
     display: none;
+}
+.form{
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    padding: 0;
+    z-index: 20;
+    overflow: hidden;
 }
 @media (min-width: 600px){
     section{
@@ -804,7 +814,6 @@ a{
             margin-right: 5px;
             position: relative;
             outline: none;
-            cursor: pointer;
         } 
         &--bleu{
             justify-content: end;
@@ -905,7 +914,6 @@ a{
             margin-right: 5px;
             position: relative;
             outline: none;
-            cursor: pointer;
         }
         &::-webkit-scrollbar {
             width: 10px;
@@ -1124,19 +1132,9 @@ a{
             border-bottom-color: #c324ff;
             background-image: linear-gradient(#2B66FF, #C324FF),linear-gradient(#2B66FF, #C324FF);
         }
-    }
-    .form{
-        background-color: black;
-        height: 100vh;
-        width: 100vw;
-        position: absolute;
-        top: 0;
-        padding: 0;
-        z-index: 20;
-        overflow: hidden;
-    }
-    
+    }  
 }
+
 @media (min-width: 900px){
     .team{
         display: flex;
@@ -1162,9 +1160,6 @@ a{
             margin: 30px 0;
             width: 240px;
             height: 75px;
-            &:hover{
-                cursor: pointer;
-            }
         }
     }
 }
