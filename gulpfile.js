@@ -22,7 +22,7 @@ const styles = () => {
 		autoprefixer({ overrideBrowserslist: ['last 2 versions', 'ie >= 10'] })
 	]))
 	.pipe(sourcemaps.write('./'))
-	.pipe(gulp.dest( './dist/assets/css'))
+	.pipe(gulp.dest( './dist/assets/css/'))
 	.pipe(browserSyncServer.stream());
 }
 
