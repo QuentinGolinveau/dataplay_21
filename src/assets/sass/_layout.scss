@@ -6,6 +6,9 @@ body, .btn--pari{
     color: v.$textcolor;
     margin: 0;
 }
+button{
+    font-family: v.$typo;
+}
 .body--landing{
     &::-webkit-scrollbar {
         width: 15px;
@@ -157,8 +160,10 @@ a{
     height: 90px;
 }
 .choix--body{
-    overflow: hidden;
     height: 100vh;
+    @media(min-width: 600px){
+        overflow: hidden;
+    }
     h1{
         display: block;
         margin: 0;
@@ -284,7 +289,7 @@ a{
     flex-direction: column;
     align-items: center;
     text-transform: uppercase;
-    //font-family: v.$typo;
+    font-family: v.$typo;
     @media(min-width: 600px){
         flex-direction: row;
         justify-content: space-around;
@@ -480,6 +485,56 @@ a{
         background-color: v.$bgcolor;
     }
 }
+.tibut{
+    display: flex;
+    justify-content: space-between;
+
+    .title--neon{
+        position: inherit ;
+        text-shadow: 0px 3px 9px v.$textcolor;
+        margin: 0;
+        top: 60px;
+        left: 20%;
+        text-transform: uppercase;
+    }
+}
+.nav, .nav_choix{
+    display: flex;
+}
+.nav_choix{
+    position: absolute;
+    top: -10px;
+    left: 15vw;
+    margin: 0;
+    &__el{
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        align-items: center;
+        border-top: 4px solid ;
+        border-bottom:4px solid ;
+        background-size:4px 100%;
+        background-position:0 0, 100% 0;
+        background-repeat:no-repeat;
+        border-radius: 4px;
+        transform: skew(-3deg,0deg);
+        align-self: center;
+        padding: 15px 30px;
+        border-top-color: #2B66FF;
+        border-bottom-color: #C324FF;
+        background-image: 
+        linear-gradient(#2B66FF, #C324FF),
+        linear-gradient(#2B66FF, #C324FF);
+        &:hover{
+            background: linear-gradient(180deg, #2B66FF 0%, #C324FF 99.93%);
+            cursor: pointer;
+        }
+        &.cecinpactif{
+            padding-top: 45px;
+            transform: translateY(9px) skew(-3deg,0deg);
+        }
+    }
+}
 
 .hidden{
     display: none;
@@ -580,21 +635,21 @@ a{
         padding-left: 15px;
     }
 }
-.nav, .nav__choix{
+.nav, .nav_choix{
     display: flex;
 }
 .bet{
     overflow: auto;
-    width: 80vw;
-    height: 75vh;
+    height: 70vh;
+    max-width: 80vw;
+    margin: 60px auto;
     &__content{
         border-top: 4px solid ;
         border-bottom:4px solid ;
         background-size:4px 100%;
         background-position:0 0, 100% 0;
         background-repeat:no-repeat;
-        border-radius: 4px;        
-        background-color: v.$gradientblack;
+        border-radius: 4px;
         box-shadow: 0px 3px 10px #c324ff;
         border-top-color: #2B66FF;
         border-bottom-color: #C324FF;
@@ -603,6 +658,77 @@ a{
         linear-gradient(#2B66FF, #C324FF);
         box-shadow:0px 3px 30px #C324FF;
         margin: 40px;
+        padding: 20px;
+        position: relative;
+        background-color: rgba(0,0,0,.2);
+    }
+    &::-webkit-scrollbar {
+        width: 10px;
+        left: 50px;
+    }  
+    &::-webkit-scrollbar-track {
+        background-color: black; 
+        border-radius: 10px;
+    }  
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: v.$gradientv; 
+    }
+    &__compteur{
+        display: flex;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        &--btn{
+            background-repeat: no-repeat;
+            overflow: hidden;
+            top: 0;
+            left: 24px;
+            background-size: contain;
+            text-indent: 200%;
+            white-space: nowrap;
+            z-index: 10;
+            background-color: transparent;
+            border: none;
+            background-position: center;
+            outline: none;
+            width: 20px;
+            display: block;        
+        }
+        &--moins{
+            background-image: url(../images/dropdown.svg);
+            transform: rotate(90deg);
+        }
+        &--plus{
+            background-image: url(../images/dropdown.svg);
+            transform: rotate(-90deg);
+        }
+        &--number{
+            margin: 20px;
+            font-weight: bold;
+        }
+    }
+    &__reponse{
+        display: flex;
+        justify-content: space-around;
+        & button{
+            border: transparent;
+            font-size: 30px;
+            color: v.$textcolor;
+            transform: skew(-3deg, 0deg);
+            background: transparent;
+            border-radius: 4px;
+            border-top: 4px solid;
+            border-bottom: 4px solid;
+            background-size: 4px 100%;
+            background-position: 0 0,100% 0;
+            background-repeat: no-repeat;
+            border-top-color: #2b66ff;
+            border-bottom-color: #c324ff;
+            background-image: linear-gradient(#2B66FF, #C324FF),linear-gradient(#2B66FF, #C324FF);
+            align-items: center;  
+            padding: 10px 20px;      
+        }
     }
 }
 .joueur{
@@ -627,6 +753,9 @@ a{
     &__el{
         padding-left: 0;
         margin: 20px;
+        li{
+            margin: 20px 0;
+        }
         label{
             padding-left: 15px;
         }
@@ -816,9 +945,9 @@ a{
         right: -280px;
     }
     &__img{
-        width: 100px;
-        height: 100px;
-        margin: 10px;
+        width: 80px;
+        height: 80px;
+        margin: 20px;
     }
     &__name{
         margin: 0;

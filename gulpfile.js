@@ -38,6 +38,11 @@ const javascript = () => {
 	  .pipe(browserSyncServer.stream());
 }
 
+const ico = () => {
+	return gulp.src('./src/assets/video/**/*.ico')
+		.pipe(gulp.dest( './dist/assets/images/'));
+}
+
 const video = () => {
 	return gulp.src('./src/assets/video/**/*.mp4')
 		.pipe(gulp.dest( './dist/assets/video/'));
@@ -96,7 +101,7 @@ const compressImages = () => {
 	 .pipe(gulp.dest('./dist/assets/images/'))
 }
 
-const build = gulp.series(html, styles, javascript, compressImages, video, json);
+const build = gulp.series(html, styles, javascript, compressImages, video, json, ico);
 const watch = gulp.series(build, gulp.parallel(watchFiles, browserSync));
 const compress = gulp.series(compressImages);
 

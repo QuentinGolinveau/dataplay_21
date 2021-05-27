@@ -47,11 +47,218 @@ if(copyright){
 fetch("assets/js/data.json").then(function(reponse){
    return reponse.json();
 }).then(function(json){
-	console.log(json);
+	var PGbuteur = document.querySelectorAll(".Gbuteur .buttonreponse");
+    var PGassists = document.querySelectorAll(".Gassists .buttonreponse");
+    var PGgardien = document.querySelectorAll(".Ggardien .buttonreponse");
+    var PGscore = document.querySelectorAll(".Gscore .buttonreponse");
+    var PGprix = document.querySelectorAll(".Gprix .buttonreponse");
+
+    var PFbuteur = document.querySelectorAll(".Fbuteur .buttonreponse");
+    var PFassists = document.querySelectorAll(".Fassists .buttonreponse");
+    var PFgardien = document.querySelectorAll(".Fgardien .buttonreponse");
+    var PFscore  = document.querySelectorAll(".Fscore .buttonreponse");
+    var PFtireur  = document.querySelectorAll(".Ftireur .buttonreponse");
+
+    var PDFbuteur = document.querySelectorAll(".Dbuteur .buttonreponse");
+    var PDFassists = document.querySelectorAll(".Dassists .buttonreponse");
+    var PDFgardien = document.querySelectorAll(".Dgardien .buttonreponse");
+    var PDFscore  = document.querySelectorAll(".Dscore .buttonreponse");
+    var PDFtireur  = document.querySelectorAll(".Dtireur .buttonreponse");
+
+    var compteurmoins = document.querySelectorAll(".compteurmoins");
+    var compteurplus = document.querySelectorAll(".compteurplus");
+    var reponse = document.querySelectorAll(".reponse");
+
+    compteurplus.forEach(compteurplus=>{
+        compteurplus.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            let counterElement = parentElement.querySelector(".number");
+            let counterValue = Number(counterElement.innerHTML);
+            if(Number(jeton)<10){
+                if(counterValue<Number(jeton)){
+                    counterValue++;
+                    counterElement.innerHTML = counterValue;
+                }
+            }else if(counterValue<10){
+                counterValue++;
+                counterElement.innerHTML = counterValue;
+            }
+            
+        })
+            
+    })
+
+    compteurmoins.forEach(compteurmoins=>{
+        compteurmoins.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            let counterElement = parentElement.querySelector(".number");
+            let counterValue = Number(counterElement.innerHTML);
+            if(counterValue>1){
+                counterValue--;  
+                counterElement.innerHTML = counterValue;
+            }
+        })
+    })
+
+
+    function buttonreponse(paris,parentElement){
+            let parentElement2= parentElement.parentNode;
+            let counterElement = parentElement2.querySelector(".number");
+            let counterValue = Number(counterElement.innerHTML);
+            if(paris.getAttribute("meta-reponse")==="true"){
+                jeton =Math.ceil(Number(jeton)+(1.5*counterValue));
+                montantjeton.innerHTML = ""+jeton+"";
+                localStorage.setItem("Jetons",jeton);
+                console.log("bonne reponse");
+            }else{
+                jeton =jeton-counterValue;
+                montantjeton.innerHTML = ""+jeton+"";
+                localStorage.setItem("Jetons",jeton);
+                console.log("mauvaise reponse");
+            } 
+    }
+
+
+    PGbuteur.forEach(PGbuteur=>{
+        PGbuteur.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PGbuteur,parentElement);
+            reponse[0].innerHTML="Arsenal : "+json["Spacestation"][0]["Compo"][0]["Arsenal"][0]["General"][0]["Goals"]+", Yukeo : "+json["Dignitas"][0]["Compo"][0]["Yukeo"][0]["General"][0]["Goals"]+", Turbopolsa : "+json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["General"][0]["Goals"];
+        })
+    })
+
+    PGassists.forEach(PGassists=>{
+        PGassists.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PGassists,parentElement);
+            reponse[1].innerHTML="jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["General"][0]["Assist"]+", Sypical : "+json["Spacestation"][0]["Compo"][0]["Sypical"][0]["General"][0]["Assist"]+", ViolentPanda : "+json["Dignitas"][0]["Compo"][0]["Violentpanda"][0]["General"][0]["Assist"];
+        })
+    })
+
+    PGgardien.forEach(PGgardien=>{
+        PGgardien.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PGgardien,parentElement);
+            reponse[2].innerHTML="Scrub Killa : "+json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["General"][0]["Save"]+", Fairy Peak : "+json["Vitality"][0]["Compo"][0]["Fairy peak"][0]["General"][0]["Save"]+", Kaydop : "+json["Vitality"][0]["Compo"][0]["Kaydop"][0]["General"][0]["Save"];
+        })
+    })
+
+    PGscore.forEach(PGscore=>{
+        PGscore.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PGscore,parentElement);
+            reponse[3].innerHTML="Renault Vitality : "+json["Vitality"][0]["Stats"][0]["General"][0]["Score"]+", NRG : "+json["NRG"][0]["Stats"][0]["General"][0]["Score"]+", Spacestation Gaming : "+json["Spacestation"][0]["Stats"][0]["General"][0]["Score"];
+        })
+    })
+
+    PGprix.forEach(PGprix=>{
+        PGprix.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PGprix,parentElement);
+            reponse[4].innerHTML="Championnat de Rocket League : 529.5K $, Roland Garros Simple Homme 2019 : 2.8M $ , Ligue des Champions de Water Polo 2019 : 63k $";
+        })
+    })
+
+    PFbuteur.forEach(PFbuteur=>{
+        PFbuteur.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PFbuteur,parentElement);
+            reponse[5].innerHTML="Turbopolsa : "+json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Goals"]+", Kaydop : "+json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Final"][0]["Goals"]+", jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Goals"];
+        
+        })
+    })
+
+    PFbuteur.forEach(PFbuteur=>{
+        PFbuteur.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PFbuteur,parentElement);
+            reponse[5].innerHTML="Turbopolsa : "+json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Goals"]+", Kaydop : "+json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Final"][0]["Goals"]+", jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Goals"];
+        
+        })
+    })
+
+    PFassists.forEach(PFassists=>{
+        PFassists.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PFassists,parentElement);
+            reponse[6].innerHTML="Turbopolsa : "+json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Assist"]+", jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Assist"]+", Scrub Killa : "+json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Final"][0]["Assist"];
+        
+        })
+    })
+
+    PFgardien.forEach(PFgardien=>{
+        PFgardien.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PFgardien,parentElement);
+            reponse[7].innerHTML="Scrub Killa : "+json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Final"][0]["Save"]+", jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Save"]+", Turbopolsa : "+json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Save"];
+        
+        })
+    })
+
+    PFscore.forEach(PFscore=>{
+        PFscore.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PFscore,parentElement);
+            reponse[8].innerHTML="NRG Esports : "+json["NRG"][0]["Stats"][0]["Final"][0]["General"][0]["Score-team"]+", Renault Vitality : "+json["Vitality"][0]["Stats"][0]["Final"][0]["General"][0]["Score-team"];
+        
+        })
+    })
+    
+    PFtireur.forEach(PFtireur=>{
+        PFtireur.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PFtireur,parentElement);
+            reponse[9].innerHTML="Kaydop : "+json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Final"][0]["Shot"]+", GarrettG : "+json["NRG"][0]["Compo"][0]["GarrettG"][0]["Final"][0]["Shot"]+", jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Shot"];
+        
+        })
+    })
+    
+    PDFbuteur.forEach(PDFbuteur=>{
+        PDFbuteur.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PDFbuteur,parentElement);
+            reponse[10].innerHTML="Turbopolsa : "+json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Semi_final"][0]["Goals"]+", Fairy Peak : "+json["Vitality"][0]["Compo"][0]["Fairy peak"][0]["Semi_final"][0]["Goals"]+", Arsenal : "+json["Spacestation"][0]["Compo"][0]["Arsenal"][0]["Semi_final"][0]["Goals"];
+        
+        })
+    })
+
+    PDFassists.forEach(PDFassists=>{
+        PDFassists.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PDFassists,parentElement);
+            reponse[11].innerHTML="jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["Semi_final"][0]["Assist"]+", GarrettG : "+json["NRG"][0]["Compo"][0]["GarrettG"][0]["Semi_final"][0]["Assist"]+", Scrub Killa : "+json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Semi_final"][0]["Assist"];
+        
+        })
+    })
+
+    PDFgardien.forEach(PDFgardien=>{
+        PDFgardien.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PDFgardien,parentElement);
+            reponse[12].innerHTML="Scrub Killa : "+json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Semi_final"][0]["Save"]+", Fairy Peak : "+json["Vitality"][0]["Compo"][0]["Fairy peak"][0]["Semi_final"][0]["Save"]+", Kaydop : "+json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Semi_final"][0]["Save"];
+        
+        })
+    })
+
+    PDFscore.forEach(PDFscore=>{
+        PDFscore.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PDFscore,parentElement);
+            reponse[13].innerHTML="Renault Vitality : "+json["Vitality"][0]["Stats"][0]["Semi_final"][0]["General"][0]["Score-team"]+", Dignitas : "+json["Dignitas"][0]["Stats"][0]["Semi_final"][0]["General"][0]["Score-team"]+", NRG Esports : "+json["NRG"][0]["Stats"][0]["Semi_final"][0]["General"][0]["Score-team"];
+        
+        })
+    })
+
+    PDFtireur.forEach(PDFtireur=>{
+        PDFtireur.addEventListener(("click"),(e)=>{
+            let parentElement = e.currentTarget.parentNode;
+            buttonreponse(PDFtireur,parentElement);
+            reponse[14].innerHTML="Aztral : "+json["Dignitas"][0]["Compo"][0]["AztraL"][0]["Semi_final"][0]["Shot"]+", Scrub Killa : "+json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Semi_final"][0]["Shot"]+", GarrettG : "+json["NRG"][0]["Compo"][0]["GarrettG"][0]["Semi_final"][0]["Shot"];
+        })
+    })
 });
 
 var curseur = document.querySelector(".curseur");
-var curseurcercle = document.querySelector(".curseurcercle");
 var curseurimage = document.querySelector(".curseurimg");
 
 var shopselect = document.querySelectorAll(".shop__select");
@@ -90,7 +297,7 @@ console.log("Last curseur :"+cliquer+", Last Logo :"+logoLast+", Vitality :"+vit
 
 if(curseur){
 	document.addEventListener(("mousemove"),(e)=>{
-		curseur.setAttribute("style",'top:'+(e.pageY-20)+"px; left:"+(e.pageX-20)+"px;");
+		curseur.setAttribute("style",'top:'+(e.pageY)+"px; left:"+(e.pageX)+"px;");
 	})
 	//---petit prob quand tu joue avec la barre
 }
@@ -106,10 +313,10 @@ function resetButton(){
 		if(shopselect.classList.contains("acheter")){
 			shopselect.children[2].innerHTML="Equipable";
 		}
+		shopselect.classList.remove("shop__select--pick");
 	})
 }
-
-
+ 
 function DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild){  
 	resetButton();
 	if(shopselect.classList.contains("bloquer") && jeton >= prixcurseur ){
@@ -117,14 +324,12 @@ function DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild){
 		jeton = jeton-prixcurseur;
 		montantjeton.innerHTML = ""+jeton+"";
 		ButtonClassDebloquage(buttonChild,shopselect);
-		curseurcercle.style.backgroundColor = "transparent";
 		localStorage.setItem("logolast",logo);
 		localStorage.setItem("Jetons",jeton);
 		localStorage.setItem(""+metacurseur+"",true);
 		localStorage.setItem("clique",""+metacurseur+"");
 	}else if(shopselect.classList.contains("acheter")){
 		curseurimage.style.backgroundImage=logo;
-		curseurcercle.style.backgroundColor = "transparent";
 		localStorage.setItem("logolast",logo);
 		localStorage.setItem("clique",""+metacurseur+"");
 	}else{
@@ -136,10 +341,13 @@ function DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild){
 }
 
 function imageLocalStorage(button){
-	curseurcercle.style.backgroundColor = "transparent";
 	curseurimage.style.backgroundImage=logoLast;
 	button.innerHTML=("Equipé");
 }
+
+
+
+
 
 shopselect.forEach(shopselect=>{
 	var  metacurseur = shopselect.getAttribute("meta-cursor");
@@ -148,12 +356,12 @@ shopselect.forEach(shopselect=>{
 		console.log(metacurseur);
 		if(metacurseur=="normal"){
 			localStorage.setItem("clique","normal");
-			curseurimage.style.backgroundImage="none";
-			curseurcercle.style.backgroundColor = "black";
+			curseurimage.style.backgroundImage="url('assets/images/curseur.svg')";
+			localStorage.setItem("logolast","url('assets/images/curseur.svg')");
 			resetButton();
 			buttonChild.innerHTML="Equipé"
 		}else if(metacurseur=="vitality"){
-			logo = "url('assets/images/vitality_logo.png')";
+			logo = "url('assets/images/curseur_vitality.svg')";
 			prixcurseur = 30;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}else if(metacurseur=="nrg"){
@@ -201,25 +409,81 @@ shopselect.forEach(shopselect=>{
 			prixcurseur = 15;
 			DebloquerCurseur(shopselect,logo,prixcurseur,metacurseur,buttonChild);
 		}
+		
+	e.currentTarget.classList.add("shop__select--pick");
 	})
 	if(metacurseur==="normal"){
-		curseurimage.style.backgroundImage="none";
-		curseurcercle.style.backgroundColor = "red";
+		curseurimage.style.backgroundImage="url('assets/images/curseur.svg')";
 		shopselect.children[2].innerHTML="Equipable";
 		if(cliquer==="normal"){
 			shopselect.children[2].innerHTML="Equipé";
 		}
 	}
 	else if(metacurseur==="vitality" && vitalityEtat==="true"){
-		ButtonClassDebloquage(shopselect.children[2], shopselect)
+		ButtonClassDebloquage(shopselect.children[2], shopselect);
 		if(cliquer ==="vitality"){
             imageLocalStorage(shopselect.children[2]);
 		}
 	}
 	else if(metacurseur==="nrg" && nrgEtat==="true"){
-		ButtonClassDebloquage(shopselect.children[2], shopselect)
+		ButtonClassDebloquage(shopselect.children[2], shopselect);
         if(cliquer ==="nrg"){
+            imageLocalStorage(shopselect.children[2]);
+        }
+    }else if(metacurseur==="ssg" && ssgEtat==="true"){
+		ButtonClassDebloquage(shopselect.children[2], shopselect);
+        if(cliquer ==="ssg"){
+            imageLocalStorage(shopselect.children[2]);
+        }
+    }else if(metacurseur==="dignitas" && dignitasEtat==="true"){
+		ButtonClassDebloquage(shopselect.children[2], shopselect);
+        if(cliquer ==="dignitas"){
+            imageLocalStorage(shopselect.children[2]);
+        }
+    }
+	else if(metacurseur==="veloce" && veloceEtat==="true"){
+		ButtonClassDebloquage(shopselect.children[2], shopselect);
+        if(cliquer ==="veloce"){
+            imageLocalStorage(shopselect.children[2]);
+        }
+    }else if(metacurseur==="pk" && pkEtat==="true"){
+		ButtonClassDebloquage(shopselect.children[2], shopselect);
+    	if(cliquer ==="pk"){
+            imageLocalStorage(shopselect.children[2]);
+        	}
+    }else if(metacurseur==="reciprocity" && reciprocityEtat==="true"){
+		ButtonClassDebloquage(shopselect.children[2], shopselect);
+        if(cliquer ==="reciprocity"){
+            imageLocalStorage(shopselect.children[2]);
+        }
+    }else if(metacurseur==="renegades" && renegadesEtat==="true"){
+		ButtonClassDebloquage(shopselect.children[2], shopselect);
+        if(cliquer ==="renegades"){
+            imageLocalStorage(shopselect.children[2]);
+        }
+    }else if(metacurseur==="eunited" && eunitedEtat==="true"){
+		ButtonClassDebloquage(shopselect.children[2], shopselect);
+        if(cliquer ==="eunited"){
+            imageLocalStorage(shopselect.children[2]);
+        }
+    }else if(metacurseur==="low" && lowkeyEtat==="true"){
+		ButtonClassDebloquage(shopselect.children[2], shopselect);
+        if(cliquer ==="low"){
+            imageLocalStorage(shopselect.children[2]);
+        }
+    }else if(metacurseur==="havoc" && havocEtat==="true"){
+		ButtonClassDebloquage(shopselect.children[2], shopselect);
+        if(cliquer ==="havoc"){
+            imageLocalStorage(shopselect.children[2]);
+        }
+    }else if(metacurseur==="sins" && sinsEtat==="true"){
+		ButtonClassDebloquage(shopselect.children[2], shopselect);
+        if(cliquer ==="sins"){
             imageLocalStorage(shopselect.children[2]);
         }
     }
 })
+
+if(cliquer ==="vitality" && vitalityEtat==="true"){
+	curseurimage.style.backgroundImage="url('assets/images/curseur_vitality.svg')";
+}
