@@ -163,6 +163,7 @@ fetch("assets/js/data.json").then(function(reponse){
     }
 
     function disablebutton(button){
+            console.log("ok");
             if(button.getAttribute("meta-reponse")==="true"){
                 button.classList.add("bet__reponse--true");
             }else{
