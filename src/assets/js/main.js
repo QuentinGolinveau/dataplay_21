@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 let buttons = document.querySelectorAll(".menu__btn");
 buttons.forEach(button => {
 	button.addEventListener("click", (e)=>{
