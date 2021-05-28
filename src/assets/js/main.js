@@ -112,7 +112,7 @@ fetch("assets/js/data.json").then(function(reponse){
             let parentElement = e.currentTarget.parentNode;
             let counterElement = parentElement.querySelector(".number");
             let counterValue = Number(counterElement.innerHTML);
-            if(counterValue>1){
+            if(counterValue>0){
                 counterValue--;  
                 counterElement.innerHTML = counterValue;
             }
