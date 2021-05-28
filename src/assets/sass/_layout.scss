@@ -189,6 +189,7 @@ a{
 .logo{
     max-width: 80%;
     align-self: center;
+    padding: 40px 20px;
 }
 .pret,.equipe,.banner{
     display: flex;
@@ -649,6 +650,7 @@ a{
     }
     .logo{
         max-width: 40%;
+        height: 150px;
     }
     .title{
         &--princ{
@@ -1248,6 +1250,9 @@ a{
 }
 
 @media (min-width: 900px){
+    .logo{
+        height: 200px;
+    }
     .team{
         display: flex;
         width: 100%;
@@ -1284,10 +1289,18 @@ a{
         max-width: 50vw;
         text-align: center;
     }
+    .logo{
+        height: 250px;
+        padding: 50px;
+    }
 }
 @media (min-width : 1500px){
     .carte{
         width: 12vw;
+    }
+    .logo{
+        height: 260px;
+        padding: 60px;
     }
 }
 @keyframes down{
