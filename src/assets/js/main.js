@@ -162,12 +162,11 @@ fetch("assets/js/data.json").then(function(reponse){
         }
     }
 
-    function disablebutton(button){
-            console.log("ok");
-            if(button.getAttribute("meta-reponse")==="true"){
-                button.classList.add("bet__reponse--true");
+    function disablebutton(button,all){
+            if(button==="true"){
+                all.classList.add("bet__reponse--true");
             }else{
-                button.classList.add("bet__reponse--false");
+                all.classList.add("bet__reponse--false");
             } 
     }
     
@@ -176,18 +175,17 @@ fetch("assets/js/data.json").then(function(reponse){
         PGbuteur.addEventListener(("click"),(e)=>{
             divgraph[0].classList.remove("hidden");
             let parentElement = e.currentTarget.parentNode;
-            let enfantElement = parentElement.children;
-            console.log(enfantElement);
             buttonreponse(PGbuteur,parentElement);
-        
+            let all = document.querySelectorAll(".Gbuteur .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
             var reponse1 = [json["Spacestation"][0]["Compo"][0]["Arsenal"][0]["General"][0]["Goals"],json["Dignitas"][0]["Compo"][0]["Yukeo"][0]["General"][0]["Goals"],json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["General"][0]["Goals"]];
 
             var joueur1 = ["Arsenal","Yukeo","Turbopolsa"];
 
             creadiv(3, divgraph[0],reponse1,joueur1);
-            for(let i=0; i<enfantElement.lenght;i++){
-                disablebutton(enfantElement[i]);
-            }
         })
            
     })
@@ -197,6 +195,11 @@ fetch("assets/js/data.json").then(function(reponse){
             divgraph[1].classList.remove("hidden");
             let parentElement = e.currentTarget.parentNode;
             buttonreponse(PGassists,parentElement);
+            let all = document.querySelectorAll(".Gassists .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
 
             var reponse2 = [json["NRG"][0]["Compo"][0]["jstn."][0]["General"][0]["Assist"],json["Spacestation"][0]["Compo"][0]["Sypical"][0]["General"][0]["Assist"],json["Dignitas"][0]["Compo"][0]["Violentpanda"][0]["General"][0]["Assist"]];
 
@@ -211,6 +214,11 @@ fetch("assets/js/data.json").then(function(reponse){
             divgraph[2].classList.remove("hidden");
             let parentElement = e.currentTarget.parentNode;
             buttonreponse(PGgardien,parentElement);
+            let all = document.querySelectorAll(".Ggardien .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
 
             var reponse3 = [json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["General"][0]["Save"],json["Vitality"][0]["Compo"][0]["Fairy peak"][0]["General"][0]["Save"],json["Vitality"][0]["Compo"][0]["Kaydop"][0]["General"][0]["Save"]];
 
@@ -225,6 +233,11 @@ fetch("assets/js/data.json").then(function(reponse){
             let parentElement = e.currentTarget.parentNode;
             divgraph[3].classList.remove("hidden");
             buttonreponse(PGscore,parentElement);
+            let all = document.querySelectorAll(".Gscore .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
 
             var reponse4 = [json["Vitality"][0]["Stats"][0]["General"][0]["Score"],json["NRG"][0]["Stats"][0]["General"][0]["Score"],json["Spacestation"][0]["Stats"][0]["General"][0]["Score"]];
 
@@ -238,6 +251,11 @@ fetch("assets/js/data.json").then(function(reponse){
         PGprix.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
             buttonreponse(PGprix,parentElement);
+            let all = document.querySelectorAll(".Gprix .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
             reponse.innerHTML="<ul><li>Championnat de Rocket League : 529.5K $</li><li> Roland Garros Simple Homme 2019 : 2.8M $ </li><li> Ligue des Champions de Water Polo 2019 : 63k $</li></ul>";
         })
     })
@@ -250,6 +268,11 @@ fetch("assets/js/data.json").then(function(reponse){
             let parentElement = e.currentTarget.parentNode;
             divgraph[0].classList.remove("hidden");
             buttonreponse(PFbuteur,parentElement);
+            let all = document.querySelectorAll(".Fbuteur .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
 
             var reponse6 = [json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Goals"],json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Final"][0]["Goals"],json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Goals"]];
 
@@ -259,125 +282,176 @@ fetch("assets/js/data.json").then(function(reponse){
         })
     })
 //7
-    PFbuteur.forEach(PFbuteur=>{
-        PFbuteur.addEventListener(("click"),(e)=>{
-            let parentElement = e.currentTarget.parentNode;
-            divgraph[1].classList.remove("hidden");
-            buttonreponse(PFbuteur,parentElement);
-            
-            var reponse7 = [json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Goals"],json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Final"][0]["Goals"],json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Goals"]];
-
-            var joueur7 = ["Turbopolsa","Kaydop", "jstn."];
-
-            creadiv(3, divgraph[1], reponse7, joueur7);        
-
-        
-        })
-    })
-//8
     PFassists.forEach(PFassists=>{
         PFassists.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
-            divgraph[2].classList.remove("hidden");
+            divgraph[1].classList.remove("hidden");
             buttonreponse(PFassists,parentElement);
+            let all = document.querySelectorAll(".Fassists .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
 
             
             var reponse8 = [json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Assist"],json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Assist"],json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Final"][0]["Assist"]];
 
             var joueur8 = ["Turbopolsa", "jstn.","Scrub Killa"];
             
-            creadiv(3, divgraph[2], reponse8, joueur8); 
+            creadiv(3, divgraph[1], reponse8, joueur8); 
         
         })
     })
-//9
+//8
     PFgardien.forEach(PFgardien=>{
         PFgardien.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
-            divgraph[3].classList.remove("hidden");
+            divgraph[2].classList.remove("hidden");
             buttonreponse(PFgardien,parentElement);
+            let all = document.querySelectorAll(".Fgardien .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
      
             var reponse9 = [json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Final"][0]["Save"],json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Save"],json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Save"]];
 
             var joueur9 = ["Scrub Killa","jstn.","Turbopolsa"];
 
-            creadiv(3, divgraph[3], reponse9, joueur9);
+            creadiv(3, divgraph[2], reponse9, joueur9);
         
         })
     })
-//10
+//9
     PFscore.forEach(PFscore=>{
         PFscore.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
-            divgraph[4].classList.remove("hidden");
+            divgraph[3].classList.remove("hidden");
             buttonreponse(PFscore,parentElement);
+            let all = document.querySelectorAll(".Fscore .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
 
             var reponse10 = [json["NRG"][0]["Stats"][0]["Final"][0]["General"][0]["Score-team"],json["Vitality"][0]["Stats"][0]["Final"][0]["General"][0]["Score-team"]];
 
             var joueur10 =["NRG Esports","Renault Vitality"];
 
-            creadiv(2, divgraph[4], reponse10, joueur10);        
+            creadiv(2, divgraph[3], reponse10, joueur10);        
         })
     })
-//11    
+//10    
     PFtireur.forEach(PFtireur=>{
         PFtireur.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
-            divgraph[5].classList.remove("hidden");
+            divgraph[4].classList.remove("hidden");
             buttonreponse(PFtireur,parentElement);
+            let all = document.querySelectorAll(".Ftireur .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
 
             var reponse11 = [json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Final"][0]["Shot"],json["NRG"][0]["Compo"][0]["GarrettG"][0]["Final"][0]["Shot"],json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Shot"]];
 
             var joueur11 = ["Kaydop","GarrettG","jstn."];
             
-            creadiv(3, divgraph[5], reponse11, joueur11); 
+            creadiv(3, divgraph[4], reponse11, joueur11); 
         
         })
     })
 //Demi-Finale
-//12
+//11
 
     PDFbuteur.forEach(PDFbuteur=>{
         PDFbuteur.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
+            divgraph[0].classList.remove("hidden");
             buttonreponse(PDFbuteur,parentElement);
-            reponse[10].innerHTML="Turbopolsa : "+json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Semi_final"][0]["Goals"]+", Fairy Peak : "+json["Vitality"][0]["Compo"][0]["Fairy peak"][0]["Semi_final"][0]["Goals"]+", Arsenal : "+json["Spacestation"][0]["Compo"][0]["Arsenal"][0]["Semi_final"][0]["Goals"];
-        
+            let all = document.querySelectorAll(".Dbuteur .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
+            
+            var reponse12 = [json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Semi_final"][0]["Goals"],json["Vitality"][0]["Compo"][0]["Fairy peak"][0]["Semi_final"][0]["Goals"],json["Spacestation"][0]["Compo"][0]["Arsenal"][0]["Semi_final"][0]["Goals"]];
+            var joueur12 = ["Turbopolsa","Fairy Peak","Arsenal"];
+            
+            creadiv(3, divgraph[0], reponse12, joueur12);        
         })
     })
-//13
+//12
     PDFassists.forEach(PDFassists=>{
         PDFassists.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
+            divgraph[1].classList.remove("hidden");
             buttonreponse(PDFassists,parentElement);
-            reponse[11].innerHTML="jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["Semi_final"][0]["Assist"]+", GarrettG : "+json["NRG"][0]["Compo"][0]["GarrettG"][0]["Semi_final"][0]["Assist"]+", Scrub Killa : "+json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Semi_final"][0]["Assist"];
-        
+            let all = document.querySelectorAll(".Dassists .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
+                        
+            var reponse13 = [json["NRG"][0]["Compo"][0]["jstn."][0]["Semi_final"][0]["Assist"],json["NRG"][0]["Compo"][0]["GarrettG"][0]["Semi_final"][0]["Assist"],json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Semi_final"][0]["Assist"]];
+            var joueur13 = ["jstn.","GarrettG","Scrub Killa"];
+            
+            creadiv(3, divgraph[1], reponse13, joueur13); 
         })
     })
-//14
+//13
     PDFgardien.forEach(PDFgardien=>{
         PDFgardien.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
+            divgraph[2].classList.remove("hidden");
             buttonreponse(PDFgardien,parentElement);
-            reponse[12].innerHTML="Scrub Killa : "+json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Semi_final"][0]["Save"]+", Fairy Peak : "+json["Vitality"][0]["Compo"][0]["Fairy peak"][0]["Semi_final"][0]["Save"]+", Kaydop : "+json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Semi_final"][0]["Save"];
-        
+            let all = document.querySelectorAll(".Dgardien .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
+                                    
+            var reponse14 = [json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Semi_final"][0]["Save"],json["Vitality"][0]["Compo"][0]["Fairy peak"][0]["Semi_final"][0]["Save"],json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Semi_final"][0]["Save"]];
+            var joueur14 = ["Scrub Killa","Fairy Peak","Kaydop"];
+            
+            creadiv(3, divgraph[2], reponse14, joueur14);         
         })
     })
-
+//14
     PDFscore.forEach(PDFscore=>{
         PDFscore.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
+            divgraph[3].classList.remove("hidden");
             buttonreponse(PDFscore,parentElement);
-            reponse[13].innerHTML="Renault Vitality : "+json["Vitality"][0]["Stats"][0]["Semi_final"][0]["General"][0]["Score-team"]+", Dignitas : "+json["Dignitas"][0]["Stats"][0]["Semi_final"][0]["General"][0]["Score-team"]+", NRG Esports : "+json["NRG"][0]["Stats"][0]["Semi_final"][0]["General"][0]["Score-team"];
-        
+            let all = document.querySelectorAll(".score .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
+                                    
+            var reponse15 = [json["Vitality"][0]["Stats"][0]["Semi_final"][0]["General"][0]["Score-team"],json["Dignitas"][0]["Stats"][0]["Semi_final"][0]["General"][0]["Score-team"],json["NRG"][0]["Stats"][0]["Semi_final"][0]["General"][0]["Score-team"]];
+            var joueur15 = ["Renault Vitality","Dignitas","NRG Esports"];
+            
+            creadiv(3, divgraph[3], reponse15, joueur15); 
+
         })
     })
-
+//15
     PDFtireur.forEach(PDFtireur=>{
         PDFtireur.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
+            divgraph[4].classList.remove("hidden");
             buttonreponse(PDFtireur,parentElement);
-            reponse[14].innerHTML="Aztral : "+json["Dignitas"][0]["Compo"][0]["AztraL"][0]["Semi_final"][0]["Shot"]+", Scrub Killa : "+json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Semi_final"][0]["Shot"]+", GarrettG : "+json["NRG"][0]["Compo"][0]["GarrettG"][0]["Semi_final"][0]["Shot"];
+            let all = document.querySelectorAll(".Dtireur .buttonreponse");
+            all.forEach(all=>{
+                var allmeta = all.getAttribute("meta-reponse");
+                disablebutton(allmeta,all);
+            })
+                                    
+            var reponse16 = [json["Dignitas"][0]["Compo"][0]["AztraL"][0]["Semi_final"][0]["Shot"],json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Semi_final"][0]["Shot"],json["NRG"][0]["Compo"][0]["GarrettG"][0]["Semi_final"][0]["Shot"]];
+            var joueur16 = ["Aztral", "Scrub Killa","GarrettG"];
+            
+            creadiv(3, divgraph[4], reponse16, joueur16); 
         })
     })
 });
@@ -646,4 +720,12 @@ if(curseurimage){
     }else if(cliquer==="sins" && sinsEtat==="true"){
         curseurimage.style.backgroundImage=logoLast;
     }
+}
+
+var reset = document.querySelector(".reset")
+if(reset){
+    reset.addEventListener(("click"),(e)=>{
+        localStorage.clear();
+        window.location ="shop.html";
+    })
 }
