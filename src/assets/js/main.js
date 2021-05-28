@@ -1,7 +1,5 @@
 "use strict";
 let buttons = document.querySelectorAll(".menu__btn");
-//for(let button of buttons){};
-
 buttons.forEach(button => {
 	button.addEventListener("click", (e)=>{
 		let button = e.currentTarget;
@@ -52,7 +50,6 @@ if(SuivantBtn){
         FormClass.classList.add('hidden');
     });
 }
-
 
 let ajd = new Date();
 let year = ajd.getFullYear();
@@ -119,7 +116,6 @@ fetch("assets/js/data.json").then(function(reponse){
         })
     })
 
-
     function buttonreponse(paris,parentElement){
             let parentElement2= parentElement.parentNode;
             let counterElement = parentElement2.querySelector(".number");
@@ -128,12 +124,10 @@ fetch("assets/js/data.json").then(function(reponse){
                 jeton =Math.ceil(Number(jeton)+(1.5*counterValue));
                 montantjeton.innerHTML = ""+jeton+"";
                 localStorage.setItem("Jetons",jeton);
-                console.log("bonne reponse");
             }else{
                 jeton =jeton-counterValue;
                 montantjeton.innerHTML = ""+jeton+"";
                 localStorage.setItem("Jetons",jeton);
-                console.log("mauvaise reponse");
             } 
     }
     
@@ -488,6 +482,7 @@ var havocEtat = localStorage.getItem("havoc");
 var sinsEtat = localStorage.getItem("sins");
 var cliquer = localStorage.getItem("clique");
 var logoLast = localStorage.getItem("logolast");
+
 if(cliquer===null){   
     cliquer = "normal";
     localStorage.setItem("clique","normal");
@@ -497,15 +492,11 @@ if(logoLast===null){
     localStorage.setItem("logolast","url('assets/images/curseur.svg')");
 }
 
-console.log("Last curseur :"+cliquer+", Last Logo :"+logoLast+", Vitality :"+vitalityEtat+", NRG :"+nrgEtat+", SSG :"+ssgEtat+", Dignitas :"+dignitasEtat+", veloce :"+veloceEtat+", pk :"+pkEtat+", reciprocity :"+reciprocityEtat+", renegades :"+renegadesEtat+", eunited :"+eunitedEtat+", Lowkey :"+lowkeyEtat+", havoc :"+havocEtat+", sins :"+sinsEtat);
 
-//--- Reset shop ligne 68 et 92 de mon code
 if(curseur){
 	window.addEventListener(("mousemove"),(e)=>{
 		curseur.setAttribute("style",'top:'+(e.pageY)+"px; left:"+(e.pageX)+"px;");
 	})
-
-	//---petit prob quand tu joue avec la barre
 }
 
 function ButtonClassDebloquage(button, div){
@@ -552,15 +543,10 @@ function imageLocalStorage(button,shopselect){
 	button.innerHTML=("Equipé");
 }
 
-
-
-
-
 shopselect.forEach(shopselect=>{
 	var  metacurseur = shopselect.getAttribute("meta-cursor");
 	shopselect.addEventListener(("click"),(e)=>{   
 		let buttonChild = e.currentTarget.children[2];
-		console.log(metacurseur);
 		if(metacurseur=="normal"){
 			localStorage.setItem("clique","normal");
 			curseurimage.style.backgroundImage="url('assets/images/curseur.svg')";
