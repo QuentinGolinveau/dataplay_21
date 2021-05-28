@@ -24,4 +24,18 @@ et ainsi de suite
 colone.style.height = calc((35/45) * 100%) => va forcer le style par dessus le style du css
 
 du coup il faut savoir récupérer chaque colone indépendamment
+
+function growBatons(tableauReponse, graphique, r, numberOfVisit){
+    if(tableauReponse[r] !== 0){
+    const batontext = document.createElement('div');
+    let pourcent = (tableauReponse[r]/(numberOfVisit - 1))*100;
+
+
+
+    batontext.setAttribute("data-color",r);
+    batontext.innerHTML = tableauReponse[r] + "/" + (numberOfVisit - 1);
+    graphique.appendChild(batontext);
+    batontext.style.height = pourcent + "%";
+    }
+}
 */

@@ -34,7 +34,24 @@ buttons.forEach(button => {
 		
 	});
 })
+var FormClass = document.querySelector('.test');
+var FiltreBtn = document.querySelector('.filtre--btn');
+var HiddenEtat = document.querySelector('.hidden');
+var SuivantBtn = document.querySelector('.suivant');
 
+if(FiltreBtn,FormClass){
+  FiltreBtn.addEventListener("click", (e)=>{
+      FormClass.classList.add('form');
+      FormClass.classList.remove('hidden');
+  });
+}
+if(SuivantBtn){
+    SuivantBtn.addEventListener(("click"),(e)=>{ 
+        e.preventDefault();
+        FormClass.classList.remove('form');
+        FormClass.classList.add('hidden');
+    });
+}
 
 
 let ajd = new Date();
@@ -69,7 +86,7 @@ fetch("assets/js/data.json").then(function(reponse){
 
     var compteurmoins = document.querySelectorAll(".compteurmoins");
     var compteurplus = document.querySelectorAll(".compteurplus");
-    var reponse = document.querySelectorAll(".reponse");
+    var reponse = document.querySelector(".reponse");
 
     compteurplus.forEach(compteurplus=>{
         compteurplus.addEventListener(("click"),(e)=>{
@@ -119,102 +136,206 @@ fetch("assets/js/data.json").then(function(reponse){
                 console.log("mauvaise reponse");
             } 
     }
+    
+    var divgraph = document.querySelectorAll(".bet__graph");
+    function creadiv(longeur,position,nombre,joueur){
+        gsap.fromTo(
+            position,
+            {height: 0 },
+            {duration: 2, height: 200}
+        );
+        for(let i=0; i<longeur; i++){
+                var divbaton = document.createElement("div");
+                divbaton.classList.add("bet__graph--colonne");
+                position.appendChild(divbaton);
+                var hauteur = (nombre[i]/nombre[0])*100;
+                if(hauteur===100){
+                    divbaton.style.backgroundImage = "linear-gradient(0deg, #2B66FF 0%, #C324FF 100%)"; 
+                }else{
+                    divbaton.style.opacity="60%"
+                }
+                divbaton.style.height = hauteur + "%";
+                
+                var batontext = document.createElement("p");
+                batontext.innerHTML=""+nombre[i]+"<span>"+joueur[i]+"</span>";
+                divbaton.appendChild(batontext);
+        }
+    }
 
-
+    function disablebutton(button){
+            if(button.getAttribute("meta-reponse")==="true"){
+                button.classList.add("bet__reponse--true");
+            }else{
+                button.classList.add("bet__reponse--false");
+            } 
+    }
+    
+//1
     PGbuteur.forEach(PGbuteur=>{
         PGbuteur.addEventListener(("click"),(e)=>{
+            divgraph[0].classList.remove("hidden");
             let parentElement = e.currentTarget.parentNode;
+            let enfantElement = parentElement.children;
+            console.log(enfantElement);
             buttonreponse(PGbuteur,parentElement);
-            reponse[0].innerHTML="Arsenal : "+json["Spacestation"][0]["Compo"][0]["Arsenal"][0]["General"][0]["Goals"]+", Yukeo : "+json["Dignitas"][0]["Compo"][0]["Yukeo"][0]["General"][0]["Goals"]+", Turbopolsa : "+json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["General"][0]["Goals"];
-        })
-    })
+        
+            var reponse1 = [json["Spacestation"][0]["Compo"][0]["Arsenal"][0]["General"][0]["Goals"],json["Dignitas"][0]["Compo"][0]["Yukeo"][0]["General"][0]["Goals"],json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["General"][0]["Goals"]];
 
+            var joueur1 = ["Arsenal","Yukeo","Turbopolsa"];
+
+            creadiv(3, divgraph[0],reponse1,joueur1);
+            for(let i=0; i<enfantElement.lenght;i++){
+                disablebutton(enfantElement[i]);
+            }
+        })
+           
+    })
+//2
     PGassists.forEach(PGassists=>{
         PGassists.addEventListener(("click"),(e)=>{
+            divgraph[1].classList.remove("hidden");
             let parentElement = e.currentTarget.parentNode;
             buttonreponse(PGassists,parentElement);
-            reponse[1].innerHTML="jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["General"][0]["Assist"]+", Sypical : "+json["Spacestation"][0]["Compo"][0]["Sypical"][0]["General"][0]["Assist"]+", ViolentPanda : "+json["Dignitas"][0]["Compo"][0]["Violentpanda"][0]["General"][0]["Assist"];
+
+            var reponse2 = [json["NRG"][0]["Compo"][0]["jstn."][0]["General"][0]["Assist"],json["Spacestation"][0]["Compo"][0]["Sypical"][0]["General"][0]["Assist"],json["Dignitas"][0]["Compo"][0]["Violentpanda"][0]["General"][0]["Assist"]];
+
+            var joueur2 = ["jstn.","Sypical","ViolentPanda"];
+            
+            creadiv(3, divgraph[1],reponse2,joueur2);
         })
     })
-
+//3
     PGgardien.forEach(PGgardien=>{
         PGgardien.addEventListener(("click"),(e)=>{
+            divgraph[2].classList.remove("hidden");
             let parentElement = e.currentTarget.parentNode;
             buttonreponse(PGgardien,parentElement);
-            reponse[2].innerHTML="Scrub Killa : "+json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["General"][0]["Save"]+", Fairy Peak : "+json["Vitality"][0]["Compo"][0]["Fairy peak"][0]["General"][0]["Save"]+", Kaydop : "+json["Vitality"][0]["Compo"][0]["Kaydop"][0]["General"][0]["Save"];
+
+            var reponse3 = [json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["General"][0]["Save"],json["Vitality"][0]["Compo"][0]["Fairy peak"][0]["General"][0]["Save"],json["Vitality"][0]["Compo"][0]["Kaydop"][0]["General"][0]["Save"]];
+
+            var joueur3 = ["Scrub Killa","Fairy peak","Kaydop"];
+
+            creadiv(3, divgraph[2], reponse3,joueur3);
         })
     })
-
+//4
     PGscore.forEach(PGscore=>{
         PGscore.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
+            divgraph[3].classList.remove("hidden");
             buttonreponse(PGscore,parentElement);
-            reponse[3].innerHTML="Renault Vitality : "+json["Vitality"][0]["Stats"][0]["General"][0]["Score"]+", NRG : "+json["NRG"][0]["Stats"][0]["General"][0]["Score"]+", Spacestation Gaming : "+json["Spacestation"][0]["Stats"][0]["General"][0]["Score"];
+
+            var reponse4 = [json["Vitality"][0]["Stats"][0]["General"][0]["Score"],json["NRG"][0]["Stats"][0]["General"][0]["Score"],json["Spacestation"][0]["Stats"][0]["General"][0]["Score"]];
+
+            var joueur4 = ["Vitality","NRG","Spacestation"];
+
+            creadiv(3, divgraph[3], reponse4, joueur4);
         })
     })
-
+//5
     PGprix.forEach(PGprix=>{
         PGprix.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
             buttonreponse(PGprix,parentElement);
-            reponse[4].innerHTML="Championnat de Rocket League : 529.5K $, Roland Garros Simple Homme 2019 : 2.8M $ , Ligue des Champions de Water Polo 2019 : 63k $";
+            reponse.innerHTML="<ul><li>Championnat de Rocket League : 529.5K $</li><li> Roland Garros Simple Homme 2019 : 2.8M $ </li><li> Ligue des Champions de Water Polo 2019 : 63k $</li></ul>";
         })
     })
 
+//FINALE 
+
+//6
     PFbuteur.forEach(PFbuteur=>{
         PFbuteur.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
+            divgraph[0].classList.remove("hidden");
             buttonreponse(PFbuteur,parentElement);
-            reponse[5].innerHTML="Turbopolsa : "+json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Goals"]+", Kaydop : "+json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Final"][0]["Goals"]+", jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Goals"];
-        
+
+            var reponse6 = [json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Goals"],json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Final"][0]["Goals"],json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Goals"]];
+
+            var joueur6 = ["Turbopolsa","Kaydop", "jstn."];
+
+            creadiv(3, divgraph[0], reponse6, joueur6);        
         })
     })
-
+//7
     PFbuteur.forEach(PFbuteur=>{
         PFbuteur.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
+            divgraph[1].classList.remove("hidden");
             buttonreponse(PFbuteur,parentElement);
-            reponse[5].innerHTML="Turbopolsa : "+json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Goals"]+", Kaydop : "+json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Final"][0]["Goals"]+", jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Goals"];
+            
+            var reponse7 = [json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Goals"],json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Final"][0]["Goals"],json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Goals"]];
+
+            var joueur7 = ["Turbopolsa","Kaydop", "jstn."];
+
+            creadiv(3, divgraph[1], reponse7, joueur7);        
+
         
         })
     })
-
+//8
     PFassists.forEach(PFassists=>{
         PFassists.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
+            divgraph[2].classList.remove("hidden");
             buttonreponse(PFassists,parentElement);
-            reponse[6].innerHTML="Turbopolsa : "+json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Assist"]+", jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Assist"]+", Scrub Killa : "+json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Final"][0]["Assist"];
+
+            
+            var reponse8 = [json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Assist"],json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Assist"],json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Final"][0]["Assist"]];
+
+            var joueur8 = ["Turbopolsa", "jstn.","Scrub Killa"];
+            
+            creadiv(3, divgraph[2], reponse8, joueur8); 
         
         })
     })
-
+//9
     PFgardien.forEach(PFgardien=>{
         PFgardien.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
+            divgraph[3].classList.remove("hidden");
             buttonreponse(PFgardien,parentElement);
-            reponse[7].innerHTML="Scrub Killa : "+json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Final"][0]["Save"]+", jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Save"]+", Turbopolsa : "+json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Save"];
+     
+            var reponse9 = [json["Vitality"][0]["Compo"][0]["Scrub Killa"][0]["Final"][0]["Save"],json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Save"],json["NRG"][0]["Compo"][0]["Turbopolsa"][0]["Final"][0]["Save"]];
+
+            var joueur9 = ["Scrub Killa","jstn.","Turbopolsa"];
+
+            creadiv(3, divgraph[3], reponse9, joueur9);
         
         })
     })
-
+//10
     PFscore.forEach(PFscore=>{
         PFscore.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
+            divgraph[4].classList.remove("hidden");
             buttonreponse(PFscore,parentElement);
-            reponse[8].innerHTML="NRG Esports : "+json["NRG"][0]["Stats"][0]["Final"][0]["General"][0]["Score-team"]+", Renault Vitality : "+json["Vitality"][0]["Stats"][0]["Final"][0]["General"][0]["Score-team"];
-        
+
+            var reponse10 = [json["NRG"][0]["Stats"][0]["Final"][0]["General"][0]["Score-team"],json["Vitality"][0]["Stats"][0]["Final"][0]["General"][0]["Score-team"]];
+
+            var joueur10 =["NRG Esports","Renault Vitality"];
+
+            creadiv(2, divgraph[4], reponse10, joueur10);        
         })
     })
-    
+//11    
     PFtireur.forEach(PFtireur=>{
         PFtireur.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
+            divgraph[5].classList.remove("hidden");
             buttonreponse(PFtireur,parentElement);
-            reponse[9].innerHTML="Kaydop : "+json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Final"][0]["Shot"]+", GarrettG : "+json["NRG"][0]["Compo"][0]["GarrettG"][0]["Final"][0]["Shot"]+", jstn. : "+json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Shot"];
+
+            var reponse11 = [json["Vitality"][0]["Compo"][0]["Kaydop"][0]["Final"][0]["Shot"],json["NRG"][0]["Compo"][0]["GarrettG"][0]["Final"][0]["Shot"],json["NRG"][0]["Compo"][0]["jstn."][0]["Final"][0]["Shot"]];
+
+            var joueur11 = ["Kaydop","GarrettG","jstn."];
+            
+            creadiv(3, divgraph[5], reponse11, joueur11); 
         
         })
     })
-    
+//Demi-Finale
+//12
+
     PDFbuteur.forEach(PDFbuteur=>{
         PDFbuteur.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
@@ -223,7 +344,7 @@ fetch("assets/js/data.json").then(function(reponse){
         
         })
     })
-
+//13
     PDFassists.forEach(PDFassists=>{
         PDFassists.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;
@@ -232,7 +353,7 @@ fetch("assets/js/data.json").then(function(reponse){
         
         })
     })
-
+//14
     PDFgardien.forEach(PDFgardien=>{
         PDFgardien.addEventListener(("click"),(e)=>{
             let parentElement = e.currentTarget.parentNode;

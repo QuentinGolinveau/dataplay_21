@@ -13,6 +13,7 @@ body,a, button, input{
         cursor: none;
     }
 }
+mo
 button{
     font-family: v.$typo;
 }
@@ -51,6 +52,9 @@ a{
 .overflow{
     overflow: hidden;
 }
+.height{
+    height: 100vh;
+}
 .landing{
     &--1{
         position: relative;
@@ -64,6 +68,7 @@ a{
             opacity: 0.2;
             bottom: 0;
             right: -250px;
+            filter: blur(3px);
         }
     }
     &--2{
@@ -78,7 +83,8 @@ a{
             bottom: -250px;
             left: -432px;
             opacity: .1;
-            transform: rotate(135deg);     
+            transform: rotate(135deg);  
+            filter: blur(3px);   
         }
     }
     &--3{
@@ -95,6 +101,7 @@ a{
             opacity: .1;
             transform: rotate(135deg);
             z-index: 10;    
+            filter: blur(3px);
         }
     }
 }
@@ -198,7 +205,8 @@ a{
         position: absolute;
         right: -250px;
         opacity: .1;  
-        transform: rotate(315deg);   
+        transform: rotate(315deg); 
+        filter: blur(3px);  
     }
 }
 .carte{
@@ -365,6 +373,7 @@ a{
                 top: -100px;
                 left: -300px;
                 transform: rotate(35deg);
+                filter: blur(3px);
             }
         }
         &--violet{
@@ -381,6 +390,7 @@ a{
                 right: -200px;
                 transform: rotate(135deg);
                 z-index: -10;
+                filter: blur(3px);
             }
         }
     }
@@ -454,6 +464,9 @@ a{
     a{
         display: flex;
         align-items: center;
+        :hover{
+            color: v.$blue;
+        }
     }
     h2{
         margin: 0;
@@ -512,6 +525,21 @@ a{
     margin: 0;
     padding: 0;
     justify-content: space-around;
+    &::before{
+        background-image: url(../images/grouporange.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 600px;
+        height: 750px;
+        content: "";
+        position: fixed;
+        opacity: .2;
+        top: -100px;
+        left: -180px;
+        transform: rotate(35deg);
+        z-index: -1;
+        filter: blur(3px);
+    }
     &__el{
         display: flex;
         justify-content: flex-end;
@@ -538,14 +566,11 @@ a{
         }
         &.cecinpactif{
             transform: translateY(9px) skew(-3deg,0deg);
-            background: linear-gradient(180deg, #2B66FF 0%, #C324FF 99.93%) 25%;
+            background: linear-gradient(180deg, #2B66FF 0%, #C324FF 99.93%);
         }
     }
 }
 
-.hidden{
-    display: none;
-}
 .form{
     background-color: black;
     height: 100vh;
@@ -557,6 +582,15 @@ a{
     overflow: hidden;
 }
 @media (min-width: 600px){
+    .logo-br:hover{
+        .logo-hover{
+            fill: #2B66FF;
+        }
+        .xp{
+            color: #2B66FF;
+        }
+    }
+
     section{
         padding: 45px;
     }
@@ -603,6 +637,7 @@ a{
                 left: -280px;
                 transform: rotate(135deg);
                 z-index: -10;
+                filter: blur(3px);
             }
         }
     }
@@ -659,7 +694,22 @@ a{
     overflow: auto;
     height: 75vh;
     max-width: 80vw;
-    margin: 60px auto;
+    margin: 60px auto 0 auto;
+    &::before{
+        background-image: url(../images/groupviolet.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 600px;
+        height: 750px;
+        content: "";
+        position: fixed;
+        opacity: .2;
+        bottom: -300px;
+        right: -200px;
+        transform: rotate(135deg);
+        z-index: -10;
+        filter: blur(3px);
+    }
     &__content{
         border-top: 4px solid ;
         border-bottom:4px solid ;
@@ -733,7 +783,7 @@ a{
     &__reponse{
         display: flex;
         justify-content: space-around;
-        & button{
+        &--btn{
             border: transparent;
             font-size: 30px;
             color: v.$textcolor;
@@ -752,7 +802,17 @@ a{
             padding: 10px 20px;  
             &:hover{
                 background: linear-gradient(180deg, #2B66FF 0%, #C324FF 99.93%);
-            }    
+            }   
+        }
+        &--true{
+            background: linear-gradient(180deg, #2B66FF 0%, #C324FF 99.93%);
+            pointer-events: none;
+        }
+        &--false{
+            border-top-color: #ff1b1b;
+            border-bottom-color: #ffb914;
+            background-image: linear-gradient(#FF1B1B, #FFB914),linear-gradient(#FF1B1B, #FFB914);
+            pointer-events: none;
         }
     }
     &__graph{
@@ -764,19 +824,19 @@ a{
         width: 50%;
         margin: 40px auto;
         & div{
-            border-radius: 15px 15px 0 0;
+            border-radius: 5px 5px 0 0;
             display: flex;
-            padding: 10px;
+            padding: 0;
             padding-top: 0;
             height: 200px;
             width: 20px;
-            background-color: #990099;
+            background-image: v.$gradiento;
             justify-content: center;
-
             & p{
                 bottom: 50px;
                 position: absolute;
                 margin: 0;
+                text-align: center;
                 & span{
                     display: block;
                 }
@@ -829,6 +889,7 @@ a{
                 left: -180px;
                 transform: rotate(90deg);
                 z-index: -1;
+                filter: blur(3px);
             }
             & input[type=checkbox]{
                 border: 2px solid v.$blue;
@@ -857,6 +918,7 @@ a{
                 right: -180px;
                 transform: rotate(130deg);
                 z-index: -1;
+                filter: blur(3px);
             }
             & input[type=checkbox]{
                 border: 2px solid v.$orange;
@@ -942,6 +1004,7 @@ a{
                 left: -180px;
                 transform: rotate(90deg);
                 z-index: -1;
+                filter: blur(3px);
             }
             & input[type=radio]{
                 border: 2px solid v.$blue;
@@ -971,6 +1034,7 @@ a{
                 right: -180px;
                 transform: rotate(130deg);
                 z-index: -1;
+                filter: blur(3px);
             }
             & input[type=radio]{
                 border: 2px solid v.$orange;
@@ -1011,6 +1075,23 @@ a{
         height: 100vh;
     }
 }
+.filtre{
+    &--btn{
+        margin: 10px;
+        font-size: 30px;
+        text-transform: uppercase;
+        color: v.$textcolor;
+        background-color: transparent;
+        border: 4px solid v.$textcolor;
+        padding: 10px;
+        transform: skew(-3deg, 0deg);
+        border-radius: 4px;
+        &:hover{
+            background-color: v.$textcolor;
+            color: v.$bgcolor;
+        }
+    }
+}
 .jeton{
     display: flex;
     position: fixed;
@@ -1033,7 +1114,7 @@ a{
     z-index: 10;
     &::after{
         content: '';
-        background-image: url(../images/rl-ball.svg);
+        background-image: url(../images/rl-ball.png);
         background-size: contain;
         background-repeat: no-repeat;
         height: 50px;
@@ -1060,7 +1141,7 @@ a{
     max-width: 80vw;
     margin: 60px auto;
     &::-webkit-scrollbar {
-        width: 10px;
+        height: 10px;
         left: 50px;
     }  
     &::-webkit-scrollbar-track {
@@ -1081,6 +1162,7 @@ a{
         opacity: .2;
         top: -100px;
         right: -280px;
+        filter: blur(3px);
     }
     &__img{
         width: 80px;
@@ -1185,4 +1267,7 @@ a{
     100%{
         transform: translateY(10px);  
       }
+}
+.hidden{
+    display: none;
 }
